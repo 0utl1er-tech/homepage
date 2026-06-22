@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <script src="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg-void); }
+    .o-arrow { font-family: var(--font-mono); color: var(--accent); font-size: 13px; display: inline-flex; align-items: center; gap: 8px; transition: gap .15s ease; }
+    .o-card { display: flex; flex-direction: column; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; box-shadow: var(--shadow-sm); transition: transform .2s var(--ease-out), border-color .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+    .o-card:hover { transform: translateY(-3px); border-color: var(--border-strong); box-shadow: var(--shadow-md); }
+    .o-card:hover .o-arrow { gap: 12px; }
+    .o-skel { background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg); height: 360px; opacity: .5; animation: opulse 1.4s ease-in-out infinite; }
+    @keyframes opulse { 0%,100% { opacity: .35; } 50% { opacity: .65; } }
+  </style>
+</helmet>
+<div style="background: var(--bg-void); color: var(--text-primary); font-family: var(--font-sans); min-height: 100vh;">
+
+  <dc-import name="SiteNav" active="product" hint-size="100%,66px"></dc-import>
+
+  <header style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 48px;">
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">// サービス & お知らせ — UPDATES</div>
+      <h1 style="font-size: 46px; line-height: 1.15; font-weight: 900; letter-spacing: -.04em; margin: 0 0 16px;">サービスと、<br>最新のお知らせ。</h1>
+      <p style="font-size: 16px; line-height: 1.85; color: var(--text-secondary); margin: 0; max-width: 540px;">提供するサービスの紹介と、技術・組織に関する最新情報をお届けします。</p>
+    </div>
+  </header>
+
+  <sc-if value="{{ usingSample }}" hint-placeholder-val="{{ false }}">
+    <div style="background: var(--surface-panel); border-bottom: 1px solid var(--border-default);">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 12px 48px; display: flex; align-items: center; gap: 10px;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none;"></span>
+        <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary);">Strapi 未接続 — サンプルを表示中。<span style="color: var(--text-muted);">strapi.js の baseUrl を設定すると実データに切り替わります。</span></span>
+      </div>
+    </div>
+  </sc-if>
+
+  <section>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 48px;">
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+          <div class="o-skel"></div>
+          <div class="o-skel"></div>
+          <div class="o-skel"></div>
+          <div class="o-skel"></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+          <sc-for list="{{ items }}" as="item" hint-placeholder-count="4">
+            <a href="{{ item.href }}" class="o-card">
+              <sc-if value="{{ item.hasCover }}" hint-placeholder-val="{{ false }}">
+                <div style="aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2);">{{ item.coverEl }}</div>
+              </sc-if>
+              <sc-if value="{{ item.noCover }}" hint-placeholder-val="{{ true }}">
+                <div style="position: relative; aspect-ratio: 16 / 9; background: var(--surface-2); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                  <span aria-hidden="true" style="position: absolute; inset: 0; font-family: var(--font-mono); font-size: 14px; line-height: 1.6; color: var(--accent); opacity: .06; word-break: break-all; padding: 14px; user-select: none;">0101000101010011010011100100101101010100010011110100111001010011010100100100010101010110010010010100111001000101010011</span>
+                  <span style="position: relative; font-weight: 900; font-size: 22px; letter-spacing: -.04em; opacity: .5;"><span style="color: var(--accent);">0</span>UTL<span style="color: var(--cost);">1</span>ER</span>
+                </div>
+              </sc-if>
+              <div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <span style="font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .08em; color: var(--accent); text-transform: uppercase;">{{ item.category }}</span>
+                  <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">{{ item.dateLabel }}</span>
+                </div>
+                <h2 style="font-size: 20px; font-weight: 700; line-height: 1.45; letter-spacing: -.01em; margin: 0;">{{ item.title }}</h2>
+                <p style="font-size: 14px; line-height: 1.7; color: var(--text-secondary); margin: 0 0 6px;">{{ item.excerpt }}</p>
+                <span class="o-arrow" style="margin-top: auto;">続きを読む →</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <section style="position: relative; overflow: hidden; background: var(--surface-panel); border-top: 1px solid var(--border-default);">
+    <div aria-hidden="true" style="position: absolute; bottom: -34px; left: -10px; font-family: var(--font-mono); font-size: 120px; font-weight: 700; color: var(--accent); opacity: .05; user-select: none; pointer-events: none;">01</div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 48px;">
+      <h2 style="font-size: 34px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px;">導入・協業のご相談はこちら。</h2>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="お問い合わせ.dc.html" style="text-decoration: none;"><x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="primary" size="lg" hint-size="auto,44px">お問い合わせ →</x-import></a>
+        <span style="font-family: var(--font-mono); font-size: 14px; color: var(--text-secondary);">info@0utl1er.tech</span>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { items: [], loading: true, usingSample: false };
+  withCover(arr) {
+    return (arr || []).map((it) => ({
+      ...it,
+      coverEl: it.cover
+        ? React.createElement("img", {
+            src: it.cover,
+            alt: "",
+            style: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+          })
+        : null,
+    }));
+  }
+  async componentDidMount() {
+    let m;
+    try {
+      m = await import("./strapi.js");
+    } catch (e) {
+      this.setState({ loading: false, usingSample: true, items: [] });
+      return;
+    }
+    try {
+      const items = await m.fetchList();
+      if (items && items.length) {
+        this.setState({ items: this.withCover(items), loading: false, usingSample: false });
+        return;
+      }
+      throw new Error("empty");
+    } catch (e) {
+      this.setState({ items: this.withCover(m.SAMPLE_CARDS), loading: false, usingSample: true });
+    }
+  }
+  renderVals() {
+    return {
+      items: this.state.items,
+      loading: this.state.loading,
+      loaded: !this.state.loading,
+      usingSample: this.state.usingSample,
+    };
+  }
+}
+</script>
+</body>
+</html>

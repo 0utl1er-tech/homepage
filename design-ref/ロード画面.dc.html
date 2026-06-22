@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <style>
+    @keyframes o-shimmer { 0% { transform: translateX(-160%); } 100% { transform: translateX(480%); } }
+    @keyframes o-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    @keyframes o-pulse { 0%, 100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) {
+      .o-shimmer, .o-blink, .o-dot { animation: none !important; }
+    }
+  </style>
+</helmet>
+<div style="position: fixed; inset: 0; background: var(--bg-void); color: var(--text-primary); font-family: var(--font-sans); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+  <div style="width: min(520px, 86vw); padding: 0 24px;">
+
+    <div style="display: flex; align-items: center; gap: 9px; margin: 0 0 26px;">
+      <span class="o-dot" style="width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: o-pulse 1.5s ease-in-out infinite;"></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; color: var(--text-muted);">0UTL1ER K.K.</span>
+    </div>
+
+    <div style="font-weight: 900; font-size: 52px; line-height: 1; letter-spacing: -.04em;"><span style="color: var(--accent);">0</span><span style="color: var(--text-primary);">UTL</span><span style="color: var(--cost);">1</span><span style="color: var(--text-primary);">ER</span></div>
+    <div style="font-size: 19px; font-weight: 700; margin: 18px 0 0; letter-spacing: -.01em;"><span style="color: var(--accent);">相関</span>の<span style="color: var(--cost);">外側</span>へ</div>
+
+    <div style="margin: 40px 0 0; height: 6px; background: var(--surface-2); border: 1px solid var(--border-default); border-radius: var(--radius-pill); overflow: hidden;">
+      <div style="height: 100%; width: {{ barWidth }}; background: var(--accent); border-radius: var(--radius-pill); position: relative; overflow: hidden; transition: width .12s linear;">
+        <span class="o-shimmer" style="position: absolute; top: 0; left: 0; height: 100%; width: 38%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: o-shimmer 1.3s ease-in-out infinite;"></span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; justify-content: space-between; margin: 14px 0 0; font-family: var(--font-mono); font-size: 12px;">
+      <span style="color: var(--text-muted);">{{ status }}<span class="o-blink" style="display: inline-block; margin-left: 2px; animation: o-blink 1s step-end infinite;">_</span></span>
+      <span style="color: var(--text-secondary); font-variant-numeric: tabular-nums; font-weight: 600;">{{ pct }}</span>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin: 38px 0 0;">
+      <div style="flex: 1; display: flex; align-items: center; gap: 9px; padding: 13px 16px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-md);">
+        <span style="width: 6px; height: 6px; border-radius: 50%; flex: none; background: {{ d1 }}; transition: background .3s ease;"></span>
+        <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: {{ c1 }}; transition: color .3s ease;">CLOUD</span>
+      </div>
+      <div style="flex: 1; display: flex; align-items: center; gap: 9px; padding: 13px 16px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-md);">
+        <span style="width: 6px; height: 6px; border-radius: 50%; flex: none; background: {{ d2 }}; transition: background .3s ease;"></span>
+        <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: {{ c2 }}; transition: color .3s ease;">OSS</span>
+      </div>
+      <div style="flex: 1; display: flex; align-items: center; gap: 9px; padding: 13px 16px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-md);">
+        <span style="width: 6px; height: 6px; border-radius: 50%; flex: none; background: {{ d3 }}; transition: background .3s ease;"></span>
+        <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; color: {{ c3 }}; transition: color .3s ease;">ENGINEERING</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:760},&quot;loop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;durationMs&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3200,&quot;min&quot;:800,&quot;max&quot;:8000,&quot;step&quot;:100,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { p: 0 };
+
+  componentDidMount() {
+    this.tick = this.tick.bind(this);
+    this.start = performance.now();
+    this._raf = requestAnimationFrame(this.tick);
+  }
+  componentWillUnmount() {
+    cancelAnimationFrame(this._raf);
+    clearTimeout(this._to);
+  }
+
+  tick(now) {
+    const dur = Math.max(800, this.props.durationMs ?? 3200);
+    let t = (now - this.start) / dur;
+    if (t >= 1) {
+      this.setState({ p: 100 });
+      const loop = this.props.loop ?? true;
+      if (loop) {
+        this._to = setTimeout(() => {
+          this.start = performance.now();
+          this._raf = requestAnimationFrame(this.tick);
+        }, 900);
+      }
+      return;
+    }
+    const e = 1 - Math.pow(1 - t, 2);
+    this.setState({ p: Math.min(100, e * 100) });
+    this._raf = requestAnimationFrame(this.tick);
+  }
+
+  renderVals() {
+    const p = this.state.p;
+    let status;
+    if (p < 25) status = "接続を確立しています";
+    else if (p < 55) status = "コンテンツを読み込んでいます";
+    else if (p < 85) status = "もうすぐ完了します";
+    else status = "準備が完了しました";
+
+    const on = "var(--text-primary)", off = "var(--text-muted)";
+    const dotOn = "var(--accent)", dotOff = "var(--surface-3)";
+    const a1 = p >= 8, a2 = p >= 42, a3 = p >= 76;
+
+    return {
+      barWidth: p.toFixed(1) + "%",
+      pct: Math.round(p) + "%",
+      status,
+      c1: a1 ? on : off, d1: a1 ? dotOn : dotOff,
+      c2: a2 ? on : off, d2: a2 ? dotOn : dotOff,
+      c3: a3 ? on : off, d3: a3 ? dotOn : dotOff,
+    };
+  }
+}
+</script>
+</body>
+</html>

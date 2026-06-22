@@ -1,0 +1,22 @@
+# Keep the Docker build context small.
+.git
+.gitignore
+node_modules
+.next
+out
+build
+npm-debug.log*
+
+# Reference material — not part of the build.
+design-ref
+
+# Local / tooling
+.claude
+.env*
+.vscode
+.idea
+*.md
+.DS_Store
+Dockerfile
+.dockerignore
+.forgejo

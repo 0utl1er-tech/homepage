@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <script src="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/_ds_bundle.js"></script>
+</helmet>
+<nav style="border-bottom: 1px solid var(--border-default); background: var(--bg-void); position: sticky; top: 0; z-index: 50;">
+  <div style="max-width: 1200px; margin: 0 auto; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between;">
+    <a href="トップ.dc.html" style="display: flex; align-items: baseline; gap: 10px; text-decoration: none;">
+      <span style="font-weight: 900; font-size: 22px; letter-spacing: -.04em;"><span style="color: var(--accent);">0</span><span style="color: var(--text-primary);">UTL</span><span style="color: var(--cost);">1</span><span style="color: var(--text-primary);">ER</span></span>
+      <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: .1em;">K.K.</span>
+    </a>
+    <div style="display: flex; align-items: center; gap: 30px;">
+      <a href="事業内容.dc.html" style="font-family: var(--font-mono); font-size: 13px; text-decoration: none; color: {{ cAbout }}; transition: color .15s ease;" style-hover="color: var(--text-primary);">[ 事業内容 ]</a>
+      <a href="プロダクト.dc.html" style="font-family: var(--font-mono); font-size: 13px; text-decoration: none; color: {{ cProduct }}; transition: color .15s ease;" style-hover="color: var(--text-primary);">[ サービス ]</a>
+      <a href="会社概要.dc.html" style="font-family: var(--font-mono); font-size: 13px; text-decoration: none; color: {{ cCompany }}; transition: color .15s ease;" style-hover="color: var(--text-primary);">[ 会社概要 ]</a>
+      <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="secondary" size="sm" onClick="{{ goContact }}" hint-size="auto,30px">お問い合わせ</x-import>
+    </div>
+  </div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;66px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;services&quot;,&quot;product&quot;,&quot;company&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active || "";
+    const on = "var(--accent)";
+    const off = "var(--text-secondary)";
+    return {
+      cAbout: a === "services" ? on : off,
+      cProduct: a === "product" ? on : off,
+      cCompany: a === "company" ? on : off,
+      goContact: () => { window.location.href = "お問い合わせ.dc.html"; },
+    };
+  }
+}
+</script>
+</body>
+</html>

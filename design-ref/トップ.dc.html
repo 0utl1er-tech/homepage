@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <script src="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg-void); }
+    .o-ico { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .o-arrow { font-family: var(--font-mono); color: var(--accent); text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: gap .15s ease; }
+    .o-arrow:hover { gap: 12px; }
+  </style>
+</helmet>
+<div style="background: var(--bg-void); color: var(--text-primary); font-family: var(--font-sans); min-height: 100vh;">
+
+  <dc-import name="SiteNav" active="home" hint-size="100%,66px"></dc-import>
+
+  <header style="position: relative; overflow: hidden; border-bottom: 1px solid var(--border-default);">
+    <div aria-hidden="true" style="position: absolute; top: 40px; right: -20px; font-family: var(--font-mono); font-size: 22px; line-height: 1.5; color: var(--accent); opacity: .05; word-break: break-all; user-select: none; pointer-events: none; width: 520px; text-align: right;">0101000101010011010011100100101101010100010011110100111001010011010100100100010101010110010010010100111001000101</div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 48px; display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; color: var(--accent); margin-bottom: 24px;">// BEYOND THE CORRELATION</div>
+        <h1 style="font-size: 64px; line-height: 1.08; font-weight: 900; letter-spacing: -.04em; margin: 0 0 24px; white-space: nowrap;"><span style="color: var(--accent);">相関</span>の<span style="color: var(--cost);">外側</span>へ</h1>
+        <p style="font-size: 16px; line-height: 1.85; color: var(--text-secondary); margin: 0 0 36px; max-width: 460px;">一般的に、品質と価格はトレードオフにあると言われています。我々はそういった標準の外側に位置するため、最先端の技術や工夫を重ねています。</p>
+        <div style="display: flex; gap: 14px;">
+          <a href="お問い合わせ.dc.html" style="text-decoration: none;"><x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="primary" size="lg" hint-size="auto,44px">ご相談はこちら</x-import></a>
+          <a href="プロダクト.dc.html" style="text-decoration: none;"><x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="ghost" size="lg" hint-size="auto,44px">サービス →</x-import></a>
+        </div>
+      </div>
+      <div style="width: 100%; height: 440px; background: transparent; box-sizing: border-box;">
+        <svg viewBox="0 0 480 440" style="width: 100%; height: 100%; display: block;">
+          
+          <line x1="64" y1="392" x2="448" y2="392" style="stroke: var(--text-muted); opacity: .35; stroke-width: 1;"></line>
+          <line x1="64" y1="392" x2="64" y2="32" style="stroke: var(--text-muted); opacity: .35; stroke-width: 1;"></line>
+          <polyline points="442,387 449,392 442,397" style="fill: none; stroke: var(--text-muted); opacity: .35; stroke-width: 1;"></polyline>
+          <polyline points="59,39 64,32 69,39" style="fill: none; stroke: var(--text-muted); opacity: .35; stroke-width: 1;"></polyline>
+          <text x="448" y="412" text-anchor="end" style="font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted);">PRICE</text>
+          
+          <line x1="95" y1="348" x2="425" y2="61" style="stroke: var(--accent); opacity: .55; stroke-width: 1.5; stroke-dasharray: 440; stroke-dashoffset: {{ lineOff }};"></line>
+          <circle cx="111" cy="326" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p0 }}; transform: scale({{ p0 }});"></circle>
+          <circle cx="142" cy="304" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p1 }}; transform: scale({{ p1 }});"></circle>
+          <circle cx="166" cy="282" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p2 }}; transform: scale({{ p2 }});"></circle>
+          <circle cx="189" cy="289" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p3 }}; transform: scale({{ p3 }});"></circle>
+          <circle cx="205" cy="267" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p4 }}; transform: scale({{ p4 }});"></circle>
+          <circle cx="213" cy="237" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p5 }}; transform: scale({{ p5 }});"></circle>
+          <circle cx="236" cy="223" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p6 }}; transform: scale({{ p6 }});"></circle>
+          <circle cx="260" cy="215" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p7 }}; transform: scale({{ p7 }});"></circle>
+          <circle cx="284" cy="179" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p8 }}; transform: scale({{ p8 }});"></circle>
+          <circle cx="291" cy="201" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p9 }}; transform: scale({{ p9 }});"></circle>
+          <circle cx="307" cy="171" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p10 }}; transform: scale({{ p10 }});"></circle>
+          <circle cx="331" cy="149" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p11 }}; transform: scale({{ p11 }});"></circle>
+          <circle cx="338" cy="164" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p12 }}; transform: scale({{ p12 }});"></circle>
+          <circle cx="354" cy="127" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p13 }}; transform: scale({{ p13 }});"></circle>
+          <circle cx="385" cy="98" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p14 }}; transform: scale({{ p14 }});"></circle>
+          <circle cx="409" cy="75" r="5" style="fill: var(--text-muted); transform-box: fill-box; transform-origin: center; opacity: {{ p15 }}; transform: scale({{ p15 }});"></circle>
+          <circle cx="127" cy="68" r="9" style="fill: none; stroke: var(--cost); stroke-width: 2; transform-box: fill-box; transform-origin: center; opacity: {{ ringO }}; transform: scale({{ ringS }});"></circle>
+          <circle cx="127" cy="68" r="9" style="fill: var(--cost); stroke: var(--cost); stroke-width: 2.5; transform-box: fill-box; transform-origin: center; opacity: {{ outO }}; transform: scale({{ outS }});"></circle><text x="22" y="212" text-anchor="middle" transform="rotate(-90 22 212)" style="font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted);">PERFORMANCE</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 48px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 24px; border-bottom: 1px solid var(--border-default); margin-bottom: 8px;">
+        <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 0;">私たちを構成する3つの要素</h2>
+        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">WHAT WE ARE</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: .8fr 2fr auto; gap: 36px; padding: 36px 0; border-bottom: 1px solid var(--border-default); align-items: center;">
+        <div style="font-family: var(--font-mono); font-size: 80px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent);">01</div>
+        <div>
+          <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 8px;">マネージドプライベートクラウド</h3>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin: 0; max-width: 520px;">保守から運用まで完全自社完結。豊富な計算資源を安価にご提供します。</p>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">CLOUD</span>
+      </div>
+      <div style="display: grid; grid-template-columns: .8fr 2fr auto; gap: 36px; padding: 36px 0; border-bottom: 1px solid var(--border-default); align-items: center;">
+        <div style="font-family: var(--font-mono); font-size: 80px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent);">02</div>
+        <div>
+          <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 8px;">依存しないクリーンなソフトウェア</h3>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin: 0; max-width: 520px;">CNCFベースの透明なOSS基盤。特定ベンダーに縛られない設計です。</p>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">OSS</span>
+      </div>
+      <div style="display: grid; grid-template-columns: .8fr 2fr auto; gap: 36px; padding: 36px 0; border-bottom: 1px solid var(--border-default); align-items: center;">
+        <div style="font-family: var(--font-mono); font-size: 80px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent);">03</div>
+        <div>
+          <h3 style="font-size: 21px; font-weight: 700; margin: 0 0 8px;">精鋭エンジニア × 最新AI</h3>
+          <p style="font-size: 15px; line-height: 1.8; color: var(--text-secondary); margin: 0; max-width: 520px;">代表が選ぶ現場の精鋭に、Claude Opus 等の最新AIを組み合わせます。</p>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">TEAM × AI</span>
+      </div>
+
+      <div style="margin-top: 28px;">
+        <a href="事業内容.dc.html" class="o-arrow">事業内容の詳細を見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; color: var(--accent); margin-bottom: 14px;">// COMPANY</div>
+        <h2 style="font-size: 30px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 20px;">会社概要</h2>
+        <a href="会社概要.dc.html" class="o-arrow">会社情報を見る →</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; padding: 22px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-lg);">
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Avatar" name="黒羽 晟" size="52" ring="accent" hint-size="52px,52px"></x-import>
+        <div>
+          <div style="font-size: 16px; font-weight: 700;">黒羽 晟</div>
+          <div style="font-size: 13px; color: var(--text-muted);">代表取締役</div>
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); margin-top: 8px;">0UTL1ER株式会社 — 埼玉 / 久喜市</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative; overflow: hidden; background: var(--surface-panel);">
+    <div aria-hidden="true" style="position: absolute; bottom: -34px; left: -10px; font-family: var(--font-mono); font-size: 120px; font-weight: 700; color: var(--accent); opacity: .05; user-select: none; pointer-events: none;">01</div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 48px;">
+      <h2 style="font-size: 36px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 24px;">最良のサービスを、一緒に。</h2>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="お問い合わせ.dc.html" style="text-decoration: none;"><x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="primary" size="lg" hint-size="auto,44px">お問い合わせ →</x-import></a>
+        <span style="font-family: var(--font-mono); font-size: 14px; color: var(--text-secondary);">info@0utl1er.tech</span>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { t: 0 };
+
+  componentDidMount() {
+    this.frame = this.frame.bind(this);
+    this.start = performance.now();
+    this._raf = requestAnimationFrame(this.frame);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); }
+
+  frame(now) {
+    this.setState({ t: now - this.start });
+    this._raf = requestAnimationFrame(this.frame);
+  }
+
+  renderVals() {
+    const t = this.state.t || 0;
+    const clamp = x => Math.max(0, Math.min(1, x));
+    const easeOut = p => 1 - Math.pow(1 - p, 2);
+    const easeBack = p => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+
+    const out = {};
+
+    // cluster dots — staggered pop, left→right
+    for (let i = 0; i < 16; i++) {
+      const d = 150 + i * 70;
+      out["p" + i] = easeOut(clamp((t - d) / 450));
+    }
+
+    // correlation trend line draws in after the cluster
+    const lf = clamp((t - 1300) / 800);
+    out.lineOff = 440 * (1 - lf);
+
+    // outlier dot pops with overshoot
+    const of = clamp((t - 1750) / 520);
+    out.outO = clamp(of * 4);
+    out.outS = of > 0 ? easeBack(of) : 0;
+
+    // outlier pulse ring (loops)
+    if (t > 2050) {
+      const ph = ((t - 2050) % 1700) / 1700;
+      out.ringO = 0.6 * (1 - ph);
+      out.ringS = 0.7 + ph * 2.4;
+    } else {
+      out.ringO = 0;
+      out.ringS = 0;
+    }
+
+    // annotation fades in last
+    out.annoO = clamp((t - 2050) / 500);
+
+    return out;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* =========================================================================
+   0UTL1ER — Color tokens
+   Dark-mode-first BI palette. Profit = green, Cost = red, Brand = blue.
+   Base values first, semantic aliases below.
+   ========================================================================= */
+
+:root {
+  /* ---- Neutral ramp (deep navy → near-white) ---------------------------- */
+  --navy-1000: #06090f; /* deepest — app void */
+  --navy-950:  #0a0e18; /* app background */
+  --navy-900:  #0e1322; /* base panel */
+  --navy-850:  #121829; /* surface 1 (cards) */
+  --navy-800:  #161d31; /* surface 2 */
+  --navy-750:  #1b2338; /* surface 3 (elevated) */
+  --navy-700:  #222c45; /* hairline / border strong */
+  --navy-650:  #2b3656; /* border on elevated */
+  --navy-600:  #36436a; /* divider on hover */
+  --navy-500:  #475680; /* disabled fill */
+  --slate-400: #5d6a8c; /* text muted */
+  --slate-300: #8b96b2; /* text secondary */
+  --slate-200: #aeb8d0; /* text tertiary-light */
+  --slate-100: #d3dae9; /* text high on dark */
+  --white:     #eef1f8; /* text primary */
+  --pure-white:#ffffff;
+
+  /* ---- Brand / accent (blue) -------------------------------------------- */
+  --blue-700: #1d4ed8;
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6; /* primary accent */
+  --blue-400: #5e9bff;
+  --blue-300: #93c0ff;
+  --blue-glow: rgba(59, 130, 246, 0.35);
+  --blue-tint: rgba(59, 130, 246, 0.12);
+
+  /* ---- Profit (green) — positive contribution --------------------------- */
+  --green-700: #15803d;
+  --green-600: #16a34a;
+  --green-500: #22c55e;
+  --green-400: #4ade80;
+  --green-300: #86efac;
+  --green-tint: rgba(34, 197, 94, 0.14);
+  --green-glow: rgba(34, 197, 94, 0.30);
+
+  /* ---- Cost (red) — money out ------------------------------------------- */
+  --red-700: #b91c1c;
+  --red-600: #dc2626;
+  --red-500: #ef4444;
+  --red-400: #f87171;
+  --red-300: #fca5a5;
+  --red-tint: rgba(239, 68, 68, 0.14);
+  --red-glow: rgba(239, 68, 68, 0.30);
+
+  /* ---- Revenue (cyan) — top-line, before split -------------------------- */
+  --cyan-600: #0891b2;
+  --cyan-500: #06b6d4;
+  --cyan-400: #22d3ee;
+  --cyan-tint: rgba(6, 182, 212, 0.14);
+
+  /* ---- Warning / attention (amber) -------------------------------------- */
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-400: #fbbf24;
+  --amber-tint: rgba(245, 158, 11, 0.14);
+
+  /* ===== Semantic aliases ================================================ */
+
+  /* Backgrounds & surfaces */
+  --bg-app:        var(--navy-950);
+  --bg-void:       var(--navy-1000);
+  --surface-1:     var(--navy-850);  /* default card */
+  --surface-2:     var(--navy-800);  /* nested / inset */
+  --surface-3:     var(--navy-750);  /* elevated, menus, hover row */
+  --surface-panel: var(--navy-900);  /* sidebars, app chrome */
+
+  /* Borders */
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --border-default: var(--navy-700);
+  --border-strong:  var(--navy-650);
+  --border-accent:  var(--blue-500);
+
+  /* Text */
+  --text-primary:   var(--white);
+  --text-secondary: var(--slate-300);
+  --text-muted:     var(--slate-400);
+  --text-on-accent: var(--pure-white);
+  --text-disabled:  var(--navy-500);
+
+  /* Brand / interactive accent */
+  --accent:        var(--blue-500);
+  --accent-hover:  var(--blue-400);
+  --accent-active: var(--blue-600);
+  --accent-tint:   var(--blue-tint);
+  --focus-ring:    var(--blue-glow);
+
+  /* Financial semantics — the heart of the product */
+  --profit:        var(--green-500);
+  --profit-strong: var(--green-400);
+  --profit-tint:   var(--green-tint);
+  --profit-glow:   var(--green-glow);
+  --cost:          var(--red-500);
+  --cost-strong:   var(--red-400);
+  --cost-tint:     var(--red-tint);
+  --cost-glow:     var(--red-glow);
+  --revenue:       var(--cyan-400);
+  --revenue-tint:  var(--cyan-tint);
+
+  /* Status */
+  --status-positive: var(--green-500);
+  --status-negative: var(--red-500);
+  --status-warning:  var(--amber-500);
+  --status-info:     var(--blue-400);
+  --status-neutral:  var(--slate-400);
+}

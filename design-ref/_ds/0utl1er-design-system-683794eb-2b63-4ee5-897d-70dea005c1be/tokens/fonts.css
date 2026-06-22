@@ -1,0 +1,8 @@
+/* =========================================================================
+   0UTL1ER — Webfonts
+   Noto Sans JP (UI + Japanese), JetBrains Mono (figures).
+   Loaded from Google Fonts CDN. For production, self-host the binaries and
+   replace these @import lines with local @font-face src: url(...) rules.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap');

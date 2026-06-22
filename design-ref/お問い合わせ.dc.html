@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <script src="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg-void); }
+    .o-input { width: 100%; box-sizing: border-box; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-md); padding: 13px 15px; color: var(--text-primary); font-family: var(--font-sans); font-size: 14px; outline: none; transition: border-color .15s ease; }
+    .o-input::placeholder { color: var(--text-muted); }
+    .o-input:focus { border-color: var(--accent); }
+    .o-label { display: block; font-size: 12px; font-weight: 600; letter-spacing: .04em; color: var(--text-secondary); margin-bottom: 8px; }
+  </style>
+</helmet>
+<div style="background: var(--bg-void); color: var(--text-primary); font-family: var(--font-sans); min-height: 100vh;">
+
+  <dc-import name="SiteNav" active="contact" hint-size="100%,66px"></dc-import>
+
+  <header style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 48px;">
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">// お問い合わせ — CONTACT</div>
+      <h1 style="font-size: 46px; line-height: 1.15; font-weight: 900; letter-spacing: -.04em; margin: 0 0 16px;">課題のご相談から、<br>お気軽にどうぞ。</h1>
+      <p style="font-size: 16px; line-height: 1.85; color: var(--text-secondary); margin: 0; max-width: 520px;">受託開発・エンジニア派遣・クラウド構築のいずれも、まずは現状をお聞かせください。担当より折り返しご連絡します。</p>
+    </div>
+  </header>
+
+  <section>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 64px 48px; display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: start;">
+
+      <div>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 48px; background: var(--surface-1); border: 1px solid var(--profit); border-radius: var(--radius-lg);">
+            <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Badge" tone="profit" dot="true" hint-size="auto,22px">送信完了</x-import>
+            <h2 style="font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin: 0;">お問い合わせを受け付けました。</h2>
+            <p style="font-size: 14px; line-height: 1.8; color: var(--text-secondary); margin: 0;">ご入力いただいた内容を確認のうえ、担当より2営業日以内にご連絡いたします。</p>
+            <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="secondary" size="md" onClick="{{ reset }}" hint-size="auto,36px">フォームに戻る</x-import>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="grid-column: span 2;">
+              <label class="o-label">会社名</label>
+              <input class="o-input" type="text" placeholder="0UTL1ER株式会社">
+            </div>
+            <div>
+              <label class="o-label">お名前 <span style="color: var(--cost);">*</span></label>
+              <input class="o-input" type="text" placeholder="山田 太郎">
+            </div>
+            <div>
+              <label class="o-label">メールアドレス <span style="color: var(--cost);">*</span></label>
+              <input class="o-input" type="email" placeholder="you@example.com">
+            </div>
+            <div style="grid-column: span 2;">
+              <label class="o-label">ご相談内容 <span style="color: var(--cost);">*</span></label>
+              <textarea class="o-input" rows="6" placeholder="ご相談・ご質問の内容をご記入ください。" style="resize: vertical;"></textarea>
+            </div>
+            <div style="grid-column: span 2; display: flex; align-items: center; gap: 16px; margin-top: 4px;">
+              <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="primary" size="lg" onClick="{{ submit }}" hint-size="auto,44px">送信する →</x-import>
+              <span style="font-size: 12px; color: var(--text-muted);">送信をもってプライバシーポリシーに同意したものとします。</span>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,120px">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--text-muted); margin-bottom: 12px;">EMAIL</div>
+          <a href="mailto:info@0utl1er.tech" style="font-family: var(--font-mono); font-size: 16px; color: var(--accent); text-decoration: none;">info@0utl1er.tech</a>
+          <p style="font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin: 12px 0 0;">フォームのほか、メールでも直接ご連絡いただけます。</p>
+        </x-import>
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,120px">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--text-muted); margin-bottom: 12px;">OFFICE</div>
+          <p style="font-size: 14px; line-height: 1.8; color: var(--text-primary); margin: 0;">〒346-0005<br>埼玉県久喜市久喜中央3-2-11</p>
+        </x-import>
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,120px">
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--text-muted); margin-bottom: 12px;">HOURS</div>
+          <p style="font-family: var(--font-mono); font-size: 14px; color: var(--text-primary); margin: 0;">平日 10:00 — 19:00 (JST)</p>
+        </x-import>
+      </div>
+
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { submitted: false };
+  renderVals() {
+    return {
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      submit: () => this.setState({ submitted: true }),
+      reset: () => this.setState({ submitted: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

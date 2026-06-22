@@ -1,0 +1,38 @@
+/* =========================================================================
+   0UTL1ER — Spacing & sizing tokens
+   4px base grid. Dense by default (BI tool), generous options available.
+   ========================================================================= */
+
+:root {
+  /* ---- Spacing scale (4px base) ----------------------------------------- */
+  --space-0:   0;
+  --space-1:   2px;
+  --space-2:   4px;
+  --space-3:   6px;
+  --space-4:   8px;
+  --space-5:   12px;
+  --space-6:   16px;
+  --space-7:   20px;
+  --space-8:   24px;
+  --space-9:   32px;
+  --space-10:  40px;
+  --space-11:  48px;
+  --space-12:  64px;
+  --space-14:  80px;
+  --space-16:  96px;
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --sidebar-width:        248px;
+  --sidebar-collapsed:    64px;
+  --topbar-height:        56px;
+  --content-max:          1440px;
+  --gutter:               var(--space-8);
+  --card-padding:         var(--space-7);
+  --card-padding-compact: var(--space-6);
+
+  /* ---- Control sizing --------------------------------------------------- */
+  --control-height-sm: 28px;
+  --control-height-md: 36px;
+  --control-height-lg: 44px;  /* min touch target */
+  --control-pad-x:     var(--space-6);
+}

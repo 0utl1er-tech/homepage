@@ -1,0 +1,60 @@
+name: Build and push homepage to Harbor
+
+# 0UTL1ER コーポレートサイト (Next.js) を Docker image にして自前 Harbor へ push。
+# phox-ui のワークフローを下敷きにしている。
+#
+# 認証情報 (HARBOR_USERNAME / HARBOR_PASSWORD) は Forgejo Actions の repo secret。
+#   中身は対象 Harbor project に push+pull できる robot account を想定。
+#   例: robot$web+forgejo-ci (project `web` 配下)。IMAGE を変えるなら robot の
+#   scope も合わせること。
+#
+# NEXT_PUBLIC_* は browser bundle に焼き込まれる public な値で secret では無い。
+#   Strapi を接続する時は repo の Actions variable `NEXT_PUBLIC_STRAPI_URL` を
+#   設定する (未設定ならサイトはサンプルデータ表示にフォールバック)。
+#   server 専用の STRAPI_TOKEN は image には焼かず、デプロイ先の runtime env で渡す。
+
+on:
+  push:
+    branches: [main]
+  # 緊急時の手動 rebuild 用。
+  workflow_dispatch: {}
+
+env:
+  REGISTRY: harbor.0utl1er.tech
+  IMAGE: web/homepage
+
+# main 連続 push を 1 ジョブに絞る (古い build を残しても意味がない)。
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Login to Harbor
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.HARBOR_USERNAME }}
+          password: ${{ secrets.HARBOR_PASSWORD }}
+
+      # NEXT_PUBLIC_STRAPI_URL は build-arg として Dockerfile (builder stage) に渡る。
+      # browser bundle に焼き込まれるので runtime env では変更できない。
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          build-args: |
+            NEXT_PUBLIC_STRAPI_URL=${{ vars.NEXT_PUBLIC_STRAPI_URL }}
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest
+          cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE }}/cache:buildx
+          cache-to:   type=registry,ref=${{ env.REGISTRY }}/${{ env.IMAGE }}/cache:buildx,mode=max

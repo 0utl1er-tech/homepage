@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/tokens/base.css">
+  <link rel="stylesheet" href="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/styles.css">
+  <script src="_ds/0utl1er-design-system-683794eb-2b63-4ee5-897d-70dea005c1be/_ds_bundle.js"></script>
+  <script src="image-slot.js"></script>
+  <style>
+    body { margin: 0; background: var(--bg-void); }
+    .o-arrow { font-family: var(--font-mono); color: var(--accent); text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: gap .15s ease; }
+    .o-arrow:hover { gap: 12px; }
+  </style>
+</helmet>
+<div style="background: var(--bg-void); color: var(--text-primary); font-family: var(--font-sans); min-height: 100vh;">
+
+  <dc-import name="SiteNav" active="services" hint-size="100%,66px"></dc-import>
+
+  <header style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 72px 48px;">
+      <div style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">// 事業内容 — WHAT WE DO</div>
+      <h1 style="font-size: 46px; line-height: 1.18; font-weight: 900; letter-spacing: -.04em; margin: 0 0 18px;">技術で課題を解く、<br>実装パートナー。</h1>
+      <p style="font-size: 16px; line-height: 1.85; color: var(--text-secondary); margin: 0; max-width: 560px;">先端IT企業が磨いてきた高度な技術を、安価に・高度に提供します。私たちを構成するのは、次の3つの要素です。</p>
+    </div>
+  </header>
+
+  <section style="border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 8px 48px 0;">
+      <div style="display: grid; grid-template-columns: .7fr 1.6fr; gap: 40px; padding: 56px 0; border-bottom: 1px solid var(--border-default); align-items: start;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 96px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent); margin-bottom: 16px;">01</div>
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">CLOUD</span>
+        </div>
+        <div>
+          <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px;">マネージドプライベートクラウド</h2>
+          <p style="font-size: 15px; line-height: 1.9; color: var(--text-secondary); margin: 0 0 24px; max-width: 620px;">保守から運用まで完全自社完結。豊富な計算資源を安価にご提供します。クラウドの構築・運用・監視をワンストップで担い、御社は本来の事業に集中できます。</p>
+          <image-slot id="svc-01" style="width: 100%; height: 240px; display: block;" shape="rounded" radius="12" placeholder="インフラ / データセンターのイメージ"></image-slot>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: .7fr 1.6fr; gap: 40px; padding: 56px 0; border-bottom: 1px solid var(--border-default); align-items: start;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 96px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent); margin-bottom: 16px;">02</div>
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">OSS</span>
+        </div>
+        <div>
+          <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px;">依存しないクリーンなソフトウェア</h2>
+          <p style="font-size: 15px; line-height: 1.9; color: var(--text-secondary); margin: 0 0 22px; max-width: 620px;">CNCFベースの透明なOSS基盤を採用。特定ベンダーに縛られない設計で、長期にわたり保守可能な資産を残します。ブラックボックスのない、検証できるソフトウェアを。</p>
+          <div style="font-family: var(--font-mono); font-size: 11px; letter-spacing: .12em; color: var(--text-muted); margin: 0 0 12px;">CORE STACK</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px;">
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">Kubernetes</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/argo/EF7B4D" alt="Argo CD" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">Argo CD</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/cilium/F8C517" alt="Cilium" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">Cilium</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/keycloak/4D9FE0" alt="Keycloak" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">Keycloak</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">Grafana</span>
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 9px; padding: 8px 14px 8px 11px; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: var(--radius-pill);">
+              <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="CloudNativePG" width="20" height="20" style="display: block; flex: none;">
+              <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); white-space: nowrap;">CloudNativePG</span>
+            </div>
+          </div>
+          <image-slot id="svc-02" style="width: 100%; height: 240px; display: block;" shape="rounded" radius="12" placeholder="アーキテクチャ図 / コードのイメージ"></image-slot>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: .7fr 1.6fr; gap: 40px; padding: 56px 0; align-items: start;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 96px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px var(--accent); margin-bottom: 16px;">03</div>
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">TEAM × AI</span>
+        </div>
+        <div>
+          <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px;">精鋭エンジニア × 最新AI</h2>
+          <p style="font-size: 15px; line-height: 1.9; color: var(--text-secondary); margin: 0 0 24px; max-width: 620px;">代表が選ぶ現場の精鋭に、Claude Opus 等の最新AIを組み合わせます。少数精鋭だからこそ、品質とスピードを両立。AIを単なる道具ではなく開発工程の一部として組み込みます。</p>
+          <image-slot id="svc-03" style="width: 100%; height: 240px; display: block;" shape="rounded" radius="12" placeholder="チーム / 開発風景のイメージ"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--surface-panel); border-bottom: 1px solid var(--border-default);">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 48px;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 32px;">
+        <h2 style="font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin: 0;">ご提供の形態</h2>
+        <span style="font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);">HOW WE WORK</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,180px">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 12px;">A.</div>
+          <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">受託開発</h3>
+          <p style="font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin: 0;">要件定義から設計・実装・運用まで。プロダクト開発を一気通貫でお引き受けします。</p>
+        </x-import>
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,180px">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 12px;">B.</div>
+          <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">エンジニア育成・派遣</h3>
+          <p style="font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin: 0;">育成した精鋭エンジニアを、御社のチームへ。技術力をそのまま現場に届けます。</p>
+        </x-import>
+        <x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Card" padding="24" hint-size="100%,180px">
+          <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 12px;">C.</div>
+          <h3 style="font-size: 18px; font-weight: 700; margin: 0 0 8px;">プライベートクラウド</h3>
+          <p style="font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin: 0;">自社基盤を活かした、安価で高性能な計算資源の提供。運用保守まで完結します。</p>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; bottom: -34px; left: -10px; font-family: var(--font-mono); font-size: 120px; font-weight: 700; color: var(--accent); opacity: .05; user-select: none; pointer-events: none;">01</div>
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 48px;">
+      <h2 style="font-size: 34px; font-weight: 800; letter-spacing: -.02em; margin: 0 0 14px;">課題のご相談から、お気軽に。</h2>
+      <p style="font-size: 15px; line-height: 1.85; color: var(--text-secondary); margin: 0 0 28px; max-width: 480px;">どの形態が最適かわからない段階でも構いません。まずは現状をお聞かせください。</p>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="お問い合わせ.dc.html" style="text-decoration: none;"><x-import component-from-global-scope="Ds0UTL1ERDesignSystem_683794.Button" variant="primary" size="lg" hint-size="auto,44px">お問い合わせ →</x-import></a>
+        <a href="プロダクト.dc.html" class="o-arrow">自社サービスを見る →</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+
+</div>
+</x-dc>
+</body>
+</html>
