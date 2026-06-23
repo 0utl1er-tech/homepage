@@ -128,6 +128,8 @@ export default function ServicesPage() {
                 ))}
               </div>
               <ImageSlot
+                src="/images/code.jpg"
+                alt="アーキテクチャとコード — 依存しないクリーンなソフトウェア"
                 className="h-60 w-full"
                 placeholder="アーキテクチャ図 / コードのイメージ"
               />
@@ -148,6 +150,8 @@ export default function ServicesPage() {
                 代表が選ぶ現場の精鋭に、Claude Opus 等の最新AIを組み合わせます。少数精鋭だからこそ、品質とスピードを両立。AIを単なる道具ではなく開発工程の一部として組み込みます。
               </p>
               <ImageSlot
+                src="/images/team.jpg"
+                alt="精鋭エンジニアによる開発風景"
                 className="h-60 w-full"
                 placeholder="チーム / 開発風景のイメージ"
               />

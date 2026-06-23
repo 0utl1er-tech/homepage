@@ -127,6 +127,8 @@ export default function CompanyPage() {
             </p>
           </div>
           <ImageSlot
+            src="/images/office.jpg"
+            alt="0UTL1ER のオフィス"
             className="h-[300px] w-full"
             placeholder="地図 / オフィス外観"
           />
