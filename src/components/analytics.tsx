@@ -13,7 +13,8 @@
  * ===========================================================================*/
 import Script from "next/script";
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// 本番コンテナをデフォルトに設定。Forgejo Actions variable で上書き可能。
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-P7DDXTKG";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const AHREFS_KEY = process.env.NEXT_PUBLIC_AHREFS_KEY;
 
