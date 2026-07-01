@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { AnalyticsScripts, GtmNoScript } from "@/components/analytics";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/structured-data";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto",
@@ -40,6 +42,42 @@ export const metadata: Metadata = {
       "最先端の技術で価格を抑えながら、品質を保証する実装パートナー。",
     type: "website",
     locale: "ja_JP",
+    url: "https://0utl1er.tech",
+    siteName: "0UTL1ER株式会社",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "0UTL1ER株式会社 — 相関の外側へ",
+    description:
+      "最先端の技術で価格を抑えながら、品質を保証する実装パートナー。",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    // 各サービスの認証コード。Forgejo Actions variables で設定すると出力される。
+    google: process.env.NEXT_PUBLIC_SITE_VERIFICATION_GOOGLE,
+    other: {
+      // Ahrefs Webmaster Tools のサイト所有権確認（meta タグ方式）
+      ...(process.env.NEXT_PUBLIC_SITE_VERIFICATION_AHREFS
+        ? {
+            "ahrefs-site-verification":
+              process.env.NEXT_PUBLIC_SITE_VERIFICATION_AHREFS,
+          }
+        : {}),
+      // Bing Webmaster Tools
+      ...(process.env.NEXT_PUBLIC_SITE_VERIFICATION_BING
+        ? { "msvalidate.01": process.env.NEXT_PUBLIC_SITE_VERIFICATION_BING }
+        : {}),
+    },
   },
 };
 
@@ -53,7 +91,15 @@ export default function RootLayout({
       lang="ja"
       className={`${notoSansJP.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-void text-ink">{children}</body>
+      <head>
+        <AnalyticsScripts />
+        <OrganizationJsonLd />
+        <WebSiteJsonLd />
+      </head>
+      <body className="min-h-full bg-void text-ink">
+        <GtmNoScript />
+        {children}
+      </body>
     </html>
   );
 }

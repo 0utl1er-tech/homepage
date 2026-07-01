@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "お問い合わせ",
   description:
     "受託開発・エンジニア派遣・クラウド構築のご相談。0UTL1ER株式会社へのお問い合わせはこちらから。",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

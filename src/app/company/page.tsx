@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "会社概要",
   description:
     "0UTL1ER株式会社の会社概要。代表取締役 黒羽 晟。受託開発 / エンジニア育成・派遣 / マネージドプライベートクラウド。埼玉県久喜市。",
+  alternates: { canonical: "/company" },
 };
 
 const INFO: { label: string; value: string; accent?: boolean }[] = [

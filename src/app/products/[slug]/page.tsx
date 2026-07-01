@@ -16,9 +16,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const item = await getDetail(decodeURIComponent(slug));
   if (!item) return { title: "記事が見つかりません" };
+  const canonicalPath = `/products/${slug}`;
   return {
     title: item.title,
     description: item.excerpt || undefined,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: item.title,
+      description: item.excerpt || undefined,
+      type: "article",
+      url: `https://0utl1er.tech${canonicalPath}`,
+      ...(item.hasCover && item.cover ? { images: [item.cover] } : {}),
+    },
   };
 }
 

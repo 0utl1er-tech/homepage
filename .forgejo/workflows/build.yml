@@ -53,6 +53,12 @@ jobs:
           push: true
           build-args: |
             NEXT_PUBLIC_STRAPI_URL=${{ vars.NEXT_PUBLIC_STRAPI_URL }}
+            NEXT_PUBLIC_GTM_ID=${{ vars.NEXT_PUBLIC_GTM_ID }}
+            NEXT_PUBLIC_GA_ID=${{ vars.NEXT_PUBLIC_GA_ID }}
+            NEXT_PUBLIC_AHREFS_KEY=${{ vars.NEXT_PUBLIC_AHREFS_KEY }}
+            NEXT_PUBLIC_SITE_VERIFICATION_GOOGLE=${{ vars.NEXT_PUBLIC_SITE_VERIFICATION_GOOGLE }}
+            NEXT_PUBLIC_SITE_VERIFICATION_AHREFS=${{ vars.NEXT_PUBLIC_SITE_VERIFICATION_AHREFS }}
+            NEXT_PUBLIC_SITE_VERIFICATION_BING=${{ vars.NEXT_PUBLIC_SITE_VERIFICATION_BING }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE }}:latest

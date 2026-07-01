@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "事業内容",
   description:
     "マネージドプライベートクラウド / 依存しないクリーンなソフトウェア / 精鋭エンジニア × 最新AI。0UTL1ER を構成する3つの要素と、ご提供の形態。",
+  alternates: { canonical: "/services" },
 };
 
 const STACK = [

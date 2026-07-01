@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "サービス & お知らせ",
   description:
     "0UTL1ER が提供するサービスの紹介と、技術・組織に関する最新のお知らせ。",
+  alternates: { canonical: "/products" },
 };
 
 export default async function ProductsPage() {

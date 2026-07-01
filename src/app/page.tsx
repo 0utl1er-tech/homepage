@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
@@ -28,6 +29,10 @@ const ELEMENTS = [
     desc: "代表が選ぶ現場の精鋭に、Claude Opus 等の最新AIを組み合わせます。",
   },
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
