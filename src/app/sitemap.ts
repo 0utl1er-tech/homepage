@@ -4,6 +4,11 @@ import { MEMBERS } from "@/lib/members";
 
 const SITE_URL = "https://0utl1er.tech";
 
+// sitemap.ts は特殊 Route Handler で、既定ではビルド時に固定される
+// （CMS で記事を追加してもデプロイまで sitemap に載らない）。
+// 5分ごとに再生成して Strapi の記事増減を自動反映する。
+export const revalidate = 300;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: "monthly", priority: 1 },
