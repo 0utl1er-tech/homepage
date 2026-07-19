@@ -21,7 +21,7 @@ export default function MembersPage() {
   return (
     <>
       <MembersListJsonLd members={MEMBERS} />
-      <SiteNav />
+      <SiteNav active="members" />
 
       <PageHeader
         eyebrow="// メンバー — MEMBERS"

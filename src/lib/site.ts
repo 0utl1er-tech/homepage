@@ -14,12 +14,19 @@ export const COMPANY = {
   hours: "平日 10:00 — 19:00 (JST)",
 } as const;
 
-export type NavKey = "home" | "services" | "product" | "company" | "contact";
+export type NavKey =
+  | "home"
+  | "services"
+  | "product"
+  | "company"
+  | "members"
+  | "contact";
 
 export const NAV_ITEMS: { key: NavKey; label: string; href: string }[] = [
   { key: "services", label: "[ 事業内容 ]", href: "/services" },
   { key: "product", label: "[ サービス ]", href: "/products" },
   { key: "company", label: "[ 会社概要 ]", href: "/company" },
+  { key: "members", label: "[ メンバー ]", href: "/members" },
 ];
 
 /** A long faint binary string used as a decorative background element. */

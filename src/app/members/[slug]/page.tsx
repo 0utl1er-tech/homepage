@@ -52,7 +52,7 @@ export default async function MemberPage({ params }: { params: Params }) {
   return (
     <>
       <ProfilePageJsonLd member={member} />
-      <SiteNav active="company" />
+      <SiteNav active="members" />
 
       <PageHeader
         eyebrow={
