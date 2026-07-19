@@ -84,6 +84,40 @@ export function ProfilePageJsonLd({ member }: { member: Member }) {
   );
 }
 
+/**
+ * メンバー一覧ページ用の CollectionPage + ItemList JSON-LD。
+ */
+export function MembersListJsonLd({ members }: { members: Member[] }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    url: `${SITE_URL}/members`,
+    name: `メンバー | ${COMPANY.nameJa}`,
+    inLanguage: "ja",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: members.map((m, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "Person",
+          name: m.nameJa,
+          alternateName: m.nameEn,
+          jobTitle: m.title,
+          url: `${SITE_URL}/members/${m.slug}`,
+        },
+      })),
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      // JSON-LD は静的に生成した信頼できる値のみ埋め込む
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function WebSiteJsonLd() {
   const data = {
     "@context": "https://schema.org",

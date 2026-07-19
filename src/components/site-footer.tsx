@@ -7,6 +7,7 @@ const SITEMAP = [
   { label: "事業内容", href: "/services" },
   { label: "サービス", href: "/products" },
   { label: "会社概要", href: "/company" },
+  { label: "メンバー", href: "/members" },
 ];
 
 export function SiteFooter() {
@@ -21,9 +22,9 @@ export function SiteFooter() {
             相関の外側へ。最先端の技術で価格を抑えながら、品質を保証する実装パートナー。
           </p>
           <div className="font-mono text-xs leading-relaxed text-ink-3">
-            {COMPANY.zip} {COMPANY.address.slice(0, 5)}
+            {COMPANY.zip} {COMPANY.address.slice(0, 6)}
             <br />
-            {COMPANY.address.slice(5)}
+            {COMPANY.address.slice(6)}
           </div>
         </div>
 

@@ -5,8 +5,10 @@ export const COMPANY = {
   nameEn: "0UTL1ER K.K.",
   tagline: "相関の外側へ",
   email: "info@0utl1er.tech",
-  zip: "〒346-0005",
-  address: "埼玉県久喜市久喜中央3-2-11",
+  // 住所は「3丁目2-11」の公式表記で統一する（日本郵便・Google ビジネス
+  // プロフィールの表記と揃え、NAP の一貫性を保つため）。GBP 側もこの表記に合わせること。
+  zip: "〒346-0003",
+  address: "埼玉県久喜市久喜中央3丁目2-11",
   representative: "黒羽 晟",
   representativeTitle: "代表取締役",
   hours: "平日 10:00 — 19:00 (JST)",

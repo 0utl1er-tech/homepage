@@ -55,7 +55,14 @@ export default async function MemberPage({ params }: { params: Params }) {
       <SiteNav active="company" />
 
       <PageHeader
-        eyebrow="// メンバー — MEMBER"
+        eyebrow={
+          <Link
+            href="/members"
+            className="transition-colors hover:text-brand"
+          >
+            ← メンバー一覧 — MEMBERS
+          </Link>
+        }
         title={
           <>
             {member.nameJa}
