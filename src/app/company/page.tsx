@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHeader } from "@/components/page-header";
@@ -7,6 +8,7 @@ import { DSCard } from "@/components/ds/ds-card";
 import { DSAvatar } from "@/components/ds/ds-avatar";
 import { ImageSlot } from "@/components/ds/image-slot";
 import { COMPANY } from "@/lib/site";
+import { MEMBERS } from "@/lib/members";
 
 export const metadata: Metadata = {
   title: "会社概要",
@@ -55,7 +57,10 @@ export default function CompanyPage() {
             <div className="mb-5 font-mono text-[13px] text-ink-3">
               REPRESENTATIVE
             </div>
-            <div className="flex items-center gap-4 rounded-lg border border-line bg-surface p-[22px]">
+            <Link
+              href={`/members/${MEMBERS[0].slug}`}
+              className="group flex items-center gap-4 rounded-lg border border-line bg-surface p-[22px] transition-colors hover:border-line-strong"
+            >
               <DSAvatar name={COMPANY.representative} size={56} ring="accent" />
               <div>
                 <div className="text-[17px] font-bold">
@@ -64,8 +69,11 @@ export default function CompanyPage() {
                 <div className="text-sm text-ink-3">
                   {COMPANY.representativeTitle}
                 </div>
+                <div className="mt-1 font-mono text-xs text-ink-3 transition-colors group-hover:text-brand">
+                  プロフィール →
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
 
           <div className="overflow-hidden rounded-md border border-line font-mono text-sm">

@@ -32,7 +32,7 @@ export default function OgImage() {
             marginBottom: 28,
           }}
         >
-          // BEYOND THE CORRELATION
+          {"// BEYOND THE CORRELATION"}
         </div>
         <div style={{ fontSize: 96, fontWeight: 900, letterSpacing: -4 }}>
           相関の外側へ
