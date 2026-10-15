@@ -19,6 +19,7 @@ export type NavKey =
   | "home"
   | "services"
   | "product"
+  | "blog"
   | "company"
   | "members"
   | "contact";
@@ -26,6 +27,7 @@ export type NavKey =
 export const NAV_ITEMS: { key: NavKey; label: string; href: string }[] = [
   { key: "services", label: "[ 事業内容 ]", href: "/services" },
   { key: "product", label: "[ サービス ]", href: "/products" },
+  { key: "blog", label: "[ ブログ ]", href: "/blog" },
   { key: "company", label: "[ 会社概要 ]", href: "/company" },
   { key: "members", label: "[ メンバー ]", href: "/members" },
 ];

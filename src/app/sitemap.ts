@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getList } from "@/lib/strapi";
 import { MEMBERS } from "@/lib/members";
+import { getPosts } from "@/lib/payload";
 
 const SITE_URL = "https://0utl1er.tech";
 
@@ -17,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE_URL}/company`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/contact`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/members`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     ...MEMBERS.map((m) => ({
       url: `${SITE_URL}/members/${m.slug}`,
       changeFrequency: "yearly" as const,
@@ -38,5 +40,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     productRoutes = [];
   }
 
-  return [...staticRoutes, ...productRoutes];
+  // ブログ（Payload の公開記事だけ）。記事が1本以上あるジャンルのページも載せる
+  // （0本のジャンルページは noindex にしているので載せない）。取れなければ載せない。
+  const blogRoutes: MetadataRoute.Sitemap = [];
+  const posts = await getPosts({ limit: 1000 });
+  const genres = new Map<string, string | undefined>();
+  for (const p of posts.docs) {
+    const modified = p.contentUpdatedAt || p.publishedAt || undefined;
+    blogRoutes.push({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: modified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+    if (typeof p.category === "object" && p.category) {
+      const prev = genres.get(p.category.slug);
+      if (!prev || (modified && modified > prev)) genres.set(p.category.slug, modified);
+    }
+  }
+  for (const [slug, lastModified] of genres) {
+    blogRoutes.push({
+      url: `${SITE_URL}/blog/category/${slug}`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    });
+  }
+
+  return [...staticRoutes, ...blogRoutes, ...productRoutes];
 }

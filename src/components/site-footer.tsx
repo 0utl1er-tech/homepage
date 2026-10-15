@@ -6,6 +6,7 @@ const SITEMAP = [
   { label: "トップ", href: "/" },
   { label: "事業内容", href: "/services" },
   { label: "サービス", href: "/products" },
+  { label: "ブログ", href: "/blog" },
   { label: "会社概要", href: "/company" },
   { label: "メンバー", href: "/members" },
 ];

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { PageHeader } from "@/components/page-header";
@@ -9,8 +10,10 @@ import { DSCard } from "@/components/ds/ds-card";
 import { DSBadge } from "@/components/ds/ds-badge";
 import { DSAvatar } from "@/components/ds/ds-avatar";
 import { ProfilePageJsonLd } from "@/components/structured-data";
+import { EmptyNote, PostList } from "@/components/blog/post-list";
 import { MEMBERS, getMember } from "@/lib/members";
 import { COMPANY } from "@/lib/site";
+import { getPosts } from "@/lib/payload";
 
 type Params = Promise<{ slug: string }>;
 
@@ -48,6 +51,10 @@ export default async function MemberPage({ params }: { params: Params }) {
   const { slug } = await params;
   const member = getMember(decodeURIComponent(slug));
   if (!member) notFound();
+
+  // 「書いた記事」は Payload から（ビルド時は届かないのでリクエストごとに描く。データは 60 秒キャッシュ）
+  await connection();
+  const posts = await getPosts({ authorSlug: member.slug, limit: 20 });
 
   return (
     <>
@@ -140,6 +147,23 @@ export default async function MemberPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {/* Posts */}
+      {posts.ok && (
+        <section className="border-b border-line">
+          <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-12">
+            <div className="mb-7 flex items-baseline justify-between">
+              <h2 className="text-2xl font-extrabold tracking-tight">書いた記事</h2>
+              <span className="font-mono text-[13px] text-ink-3">ARTICLES</span>
+            </div>
+            {posts.docs.length > 0 ? (
+              <PostList posts={posts.docs} />
+            ) : (
+              <EmptyNote>公開している記事はまだありません。</EmptyNote>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Company */}
       <section className="border-b border-line">

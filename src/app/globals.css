@@ -294,3 +294,20 @@
 @media (prefers-reduced-motion: reduce) {
   .loader-dot, .loader-blink, .loader-shimmer { animation: none !important; }
 }
+
+/* Blog article additions (Payload / Lexical) */
+.o-prose h2, .o-prose h3, .o-prose h4 { scroll-margin-top: 96px; }
+.o-prose h2 { padding-top: 6px; }
+.o-prose h5, .o-prose h6 { font-size: 15px; font-weight: 700; color: var(--text-primary); margin: 20px 0 8px; }
+.o-prose li > ul, .o-prose li > ol { margin: 8px 0 0; }
+.o-prose li.list-none { list-style: none; }
+.o-prose figure { margin: 8px 0 24px; }
+.o-prose figure img { margin: 0; }
+.o-prose figcaption { margin-top: 8px; font-size: 13px; color: var(--text-muted); text-align: center; }
+.o-prose pre { margin: 0 0 18px; padding: 14px 18px; overflow-x: auto; background: var(--surface-1); border: 1px solid var(--border-default); border-radius: 8px; font-size: 13px; line-height: 1.7; }
+.o-prose pre code { background: none; padding: 0; }
+.o-prose mark { background: var(--amber-tint); color: var(--text-primary); padding: 0 2px; border-radius: 2px; }
+.o-prose u { text-underline-offset: 4px; }
+.o-prose .o-checklist { list-style: none; padding-left: 4px; }
+.o-prose .o-checklist li::before { content: "□"; margin-right: 8px; color: var(--text-muted); }
+.o-prose .o-checklist li[data-checked="true"]::before { content: "☑"; color: var(--profit); }
