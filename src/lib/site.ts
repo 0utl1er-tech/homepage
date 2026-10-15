@@ -3,7 +3,8 @@
 export const COMPANY = {
   nameJa: "0UTL1ER株式会社",
   nameEn: "0UTL1ER K.K.",
-  tagline: "相関の外側へ",
+  // 英語のまま見せる（日本語訳だと「何を言っているのか」と引っかかるため。2026-10-15）
+  tagline: "Beyond the Correlation",
   email: "info@0utl1er.tech",
   // 住所は「3丁目2-11」の公式表記で統一する（日本郵便・Google ビジネス
   // プロフィールの表記と揃え、NAP の一貫性を保つため）。GBP 側もこの表記に合わせること。

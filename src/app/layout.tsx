@@ -21,11 +21,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://0utl1er.tech"),
   title: {
-    default: "0UTL1ER株式会社 — 相関の外側へ",
+    default: "0UTL1ER株式会社 — Beyond the Correlation",
     template: "%s — 0UTL1ER株式会社",
   },
   description:
-    "相関の外側へ。最先端の技術で価格を抑えながら、品質を保証する実装パートナー。マネージドプライベートクラウド / クリーンなOSS基盤 / 精鋭エンジニア × 最新AI。",
+    "最先端の技術で価格を抑えながら、品質を保証する実装パートナー。マネージドプライベートクラウド / クリーンなOSS基盤 / 精鋭エンジニア × 最新AI。",
   keywords: [
     "0UTL1ER",
     "受託開発",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     "久喜市",
   ],
   openGraph: {
-    title: "0UTL1ER株式会社 — 相関の外側へ",
+    title: "0UTL1ER株式会社 — Beyond the Correlation",
     description:
       "最先端の技術で価格を抑えながら、品質を保証する実装パートナー。",
     type: "website",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "0UTL1ER株式会社 — 相関の外側へ",
+    title: "0UTL1ER株式会社 — Beyond the Correlation",
     description:
       "最先端の技術で価格を抑えながら、品質を保証する実装パートナー。",
   },

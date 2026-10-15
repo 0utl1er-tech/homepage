@@ -45,11 +45,12 @@ export default function HomePage() {
         <div className="relative mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-14 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:px-12 md:py-24">
           <div>
             <div className="mb-6 font-mono text-[13px] tracking-[0.1em] text-brand">
-              {"// BEYOND THE CORRELATION"}
+              {"// 0UTL1ER K.K."}
             </div>
-            <h1 className="mb-6 whitespace-nowrap text-5xl font-black leading-[1.08] tracking-[-0.04em] md:text-6xl">
-              <span className="text-brand">相関</span>の
-              <span className="text-cost">外側</span>へ
+            <h1 className="mb-6 text-5xl font-black leading-[1.08] tracking-[-0.04em] md:text-6xl">
+              <span className="text-cost">Beyond</span> the
+              <br />
+              <span className="text-brand">Correlation</span>
             </h1>
             <p className="mb-9 max-w-[460px] text-base leading-loose text-ink-2">
               一般的に、品質と価格はトレードオフにあると言われています。我々はそういった標準の外側に位置するため、最先端の技術や工夫を重ねています。

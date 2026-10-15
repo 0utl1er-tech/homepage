@@ -4,7 +4,7 @@
  * ===========================================================================*/
 import { ImageResponse } from "next/og";
 
-export const alt = "0UTL1ER株式会社 — 相関の外側へ";
+export const alt = "0UTL1ER株式会社 — Beyond the Correlation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -32,10 +32,20 @@ export default function OgImage() {
             marginBottom: 28,
           }}
         >
-          {"// BEYOND THE CORRELATION"}
+          {"// 0UTL1ER K.K."}
         </div>
-        <div style={{ fontSize: 96, fontWeight: 900, letterSpacing: -4 }}>
-          相関の外側へ
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: 88,
+            fontWeight: 900,
+            letterSpacing: -3,
+            lineHeight: 1.05,
+          }}
+        >
+          <span>Beyond the</span>
+          <span>Correlation</span>
         </div>
         <div
           style={{
