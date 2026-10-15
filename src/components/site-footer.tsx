@@ -19,7 +19,7 @@ export function SiteFooter() {
             <Wordmark className="text-xl" kk />
           </div>
           <p className="mb-[18px] max-w-[320px] text-sm leading-relaxed text-ink-2">
-            Beyond the Correlation. 最先端の技術で価格を抑えながら、品質を保証する実装パートナー。
+            最先端の技術で価格を抑えながら、品質を保証する実装パートナー。
           </p>
           <div className="font-mono text-xs leading-relaxed text-ink-3">
             {COMPANY.zip} {COMPANY.address.slice(0, 6)}

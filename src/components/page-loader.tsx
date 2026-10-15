@@ -54,10 +54,6 @@ export function PageLoader({ durationMs = 3200 }: { durationMs?: number }) {
         </div>
 
         <Wordmark className="text-[52px] leading-none" />
-        <div className="mt-[18px] text-[19px] font-bold tracking-tight">
-          <span className="text-cost">Beyond</span> the{" "}
-          <span className="text-brand">Correlation</span>
-        </div>
 
         <div className="mt-10 h-1.5 overflow-hidden rounded-full border border-line bg-surface-2">
           <div
