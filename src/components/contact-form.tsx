@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DSBadge } from "@/components/ds/ds-badge";
+import { trackEvent } from "@/lib/track";
 
 const inputCls =
   "w-full rounded-md border border-line bg-surface px-[15px] py-[13px] text-sm text-ink outline-none transition-colors placeholder:text-ink-3 focus:border-brand";
@@ -42,6 +43,8 @@ export function ContactForm() {
       className="grid grid-cols-1 gap-5 sm:grid-cols-2"
       onSubmit={(e) => {
         e.preventDefault();
+        // GA4 のキーイベント（問い合わせ）。どの記事から来た人が問い合わせたかを DLH で見るのに使う
+        trackEvent("generate_lead", { form_id: "contact" });
         setSubmitted(true);
       }}
     >

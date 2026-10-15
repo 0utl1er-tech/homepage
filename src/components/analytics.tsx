@@ -8,14 +8,16 @@
  *   NEXT_PUBLIC_GA_ID      GA4 測定 ID              例: G-XXXXXXXXXX
  *   NEXT_PUBLIC_AHREFS_KEY Ahrefs Web Analytics     例: 8f3c...（data-key の UUID）
  *
- * GA4 は GTM 経由で入れるのが定石だが、GTM を触らずすぐ計測したい場合に備えて
- * GA_ID を単体でも張れるようにしてある（両方設定すると二重計測になるので注意）。
+ * GA4 はコードから直接張る（2026-10-15〜）。GTM コンテナ GTM-P7DDXTKG には GA4 タグを
+ * 置かないこと（置くと二重計測になる）。問い合わせなどのイベントは src/lib/track.ts から送る。
+ * GA4 プロパティ: 0utl1er.tech（543865300）/ ウェブストリーム 15180850745。
+ * 集計は DLH（iceberg.bronze_ga4.* → marts.content_attribution）で見る。
  * ===========================================================================*/
 import Script from "next/script";
 
 // 本番コンテナをデフォルトに設定。Forgejo Actions variable で上書き可能。
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-P7DDXTKG";
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-D948HDHZPB";
 const AHREFS_KEY = process.env.NEXT_PUBLIC_AHREFS_KEY;
 
 /** <head> に置くスクリプト群（GTM / GA4 / Ahrefs Analytics）。 */
