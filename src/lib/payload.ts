@@ -75,6 +75,24 @@ export type Service = {
   name: string;
   slug?: string | null;
   summary?: string | null;
+  target?: string | null;
+  headlineMetric?: string | null;
+  problems?: { id?: string; text: string }[] | null;
+  tasks?: { id?: string; task: string; frequency?: string | null; note?: string | null }[] | null;
+  metrics?: { id?: string; label: string; value: string; measurement: string }[] | null;
+  reasons?: { id?: string; title: string; evidence: string }[] | null;
+  pricingMode?: "fixed" | "estimate" | "consult" | null;
+  plans?: { id?: string; name: string; monthly?: string | null; initial?: string | null; includes?: string | null }[] | null;
+  minimumTerm?: string | null;
+  cancellation?: string | null;
+  excluded?: string | null;
+  priceNote?: string | null;
+  steps?: { id?: string; name: string; duration?: string | null; detail?: string | null }[] | null;
+  faqs?: { id?: string; q: string; a: string }[] | null;
+  state?: "active" | "preparing" | null;
+  ctaLabel?: string | null;
+  blogCategory?: Category | number | null;
+  _status?: "draft" | "published" | null;
 };
 
 export type Category = {
@@ -254,6 +272,27 @@ export const getCategoryBySlug = cache(async function getCategoryBySlug(
   );
   if (!json) return { ok: false, category: null };
   return { ok: true, category: json.docs?.[0] ?? null };
+});
+
+/* ---------- サービス（事業） ---------- */
+
+/** サービスを1件。draft=true なら下書き（最新の版）を API キーで取る */
+export const getServiceBySlug = cache(async function getServiceBySlug(
+  slug: string,
+  draft: boolean
+): Promise<Service | null> {
+  const params: Record<string, string | number | undefined> = {
+    "where[slug][equals]": slug,
+    depth: 1,
+    limit: 1,
+  };
+  if (draft) params.draft = "true";
+  else params["where[_status][equals]"] = "published";
+  const json = await getJson<ListResponse<Service>>(`/api/services?${qs(params)}`, {
+    draft,
+    tags: ["services"],
+  });
+  return json?.docs?.[0] ?? null;
 });
 
 /* ---------- 表示用の小物 ---------- */

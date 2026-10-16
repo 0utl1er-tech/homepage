@@ -1,14 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Sans_JP, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AnalyticsScripts, GtmNoScript } from "@/components/analytics";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/structured-data";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
-const notoSansJP = Noto_Sans_JP({
-  variable: "--font-noto",
+// 本文の書体。極太の Noto は「AI が作ったサイト」に見えるのでやめた（2026-10-16）
+const plexSansJP = IBM_Plex_Sans_JP({
+  variable: "--font-plex",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -98,7 +99,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJP.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${plexSansJP.variable} ${jetbrainsMono.variable} h-full antialiased`}
       // data-theme は下のインラインスクリプトが描画前に付ける
       suppressHydrationWarning
     >
