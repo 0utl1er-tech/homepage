@@ -151,13 +151,13 @@ export const ENTRANCES: {
   {
     audience: "local",
     label: "お店の集客の話",
-    eyebrow: "FOR LOCAL BUSINESS",
-    lead: "お店・地域の事業者さま向け。Googleマップやホームページで、お客さんに見つけてもらうための話。",
+    eyebrow: "お店・地域の事業者さま向け",
+    lead: "Googleマップやホームページで、お客さんに見つけてもらうための話。",
   },
   {
     audience: "business",
     label: "開発・インフラの話",
-    eyebrow: "FOR ENGINEERS",
-    lead: "企業のIT担当者さま・エンジニア向け。システム開発とサーバー運用の実際の記録。",
+    eyebrow: "企業のIT担当者さま・エンジニア向け",
+    lead: "システム開発とサーバー運用の、実際の記録。",
   },
 ];

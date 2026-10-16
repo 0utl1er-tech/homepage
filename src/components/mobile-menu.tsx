@@ -53,8 +53,8 @@ export function MobileMenu({ active }: { active?: NavKey }) {
                 onClick={() => setOpen(false)}
                 aria-current={active === item.key ? "page" : undefined}
                 className={cn(
-                  "flex min-h-11 items-center rounded-md border-l-2 px-3 py-3 text-[15px] font-medium transition-colors hover:bg-surface-2 hover:text-ink",
-                  active === item.key ? "border-brand text-ink" : "border-transparent text-ink-2"
+                  "flex min-h-11 items-center rounded-md px-3 py-3 text-[15px] font-medium transition-colors hover:bg-surface-2 hover:text-ink",
+                  active === item.key ? "bg-surface-2 text-ink" : "text-ink-2"
                 )}
               >
                 {item.label}

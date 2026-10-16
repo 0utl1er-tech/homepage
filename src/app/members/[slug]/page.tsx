@@ -172,7 +172,7 @@ export default async function MemberPage({ params }: { params: Params }) {
             <div className="mb-2 font-mono text-[13px] text-ink-3">COMPANY</div>
             <h2 className="text-2xl font-extrabold tracking-tight">所属</h2>
           </div>
-          <DSCard tone="accent" className="p-6">
+          <DSCard className="p-6">
             <div className="mb-1.5 text-[17px] font-bold">{COMPANY.nameJa}</div>
             <p className="mb-1 text-sm leading-relaxed text-ink-2">
               {COMPANY.zip} {COMPANY.address}

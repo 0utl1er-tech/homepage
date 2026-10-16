@@ -1,29 +1,19 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-type Tone = "default" | "profit" | "cost" | "accent";
-
-const toneColor: Record<Tone, string | null> = {
-  default: null,
-  profit: "var(--profit)",
-  cost: "var(--cost)",
-  accent: "var(--accent)",
-};
-
 /**
  * Surface-1 card with hairline border, soft shadow + inner top highlight,
- * optional left tone stripe, and an optional hover-lift when interactive.
+ * and an optional hover-lift when interactive.
+ * （左端の色線は使わない。よくある「AIっぽい」見た目になるため 2026-10-16 に廃止）
  * Mirrors the Claude Design system Card component.
  */
 export function DSCard({
-  tone = "default",
   interactive = false,
   className,
   style,
   children,
   ...rest
-}: React.ComponentProps<"div"> & { tone?: Tone; interactive?: boolean }) {
-  const stripe = toneColor[tone];
+}: React.ComponentProps<"div"> & { interactive?: boolean }) {
   return (
     <div
       data-slot="ds-card"
@@ -37,13 +27,6 @@ export function DSCard({
       style={style}
       {...rest}
     >
-      {stripe && (
-        <span
-          aria-hidden
-          className="absolute inset-y-0 left-0 w-[3px]"
-          style={{ background: stripe }}
-        />
-      )}
       {children}
     </div>
   );
