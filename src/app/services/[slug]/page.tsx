@@ -9,7 +9,7 @@ import { CtaBand } from "@/components/cta-band";
 import { DraftBanner } from "@/components/blog/draft-banner";
 import { BreadcrumbJsonLd } from "@/components/blog/json-ld";
 import { getServiceBySlug, type Service } from "@/lib/payload";
-import { SERVICE_LINES, getServiceLine, type ServiceLine } from "@/lib/services";
+import { getServiceLine, getServiceLines, type ServiceLine } from "@/lib/services";
 
 /* 事業の詳細ページ（/services/iaas・saas・bpaas・taas）。
  * 本文は Payload の「サービス」（URL名が同じもの）から出す。入っている段だけ表示する。
@@ -20,7 +20,7 @@ type Params = Promise<{ slug: string }>;
 async function load(params: Params) {
   await connection();
   const { slug } = await params;
-  const line = getServiceLine(slug);
+  const line = await getServiceLine(slug);
   if (!line) return { line: null, service: null, draft: false };
   const { isEnabled: draft } = await draftMode();
   const service = await getServiceBySlug(slug, draft);
@@ -205,8 +205,9 @@ function Body({ service }: { service: Service }) {
   );
 }
 
-function OtherLines({ current }: { current: ServiceLine }) {
-  const others = SERVICE_LINES.filter((s) => s.slug !== current.slug);
+async function OtherLines({ current }: { current: ServiceLine }) {
+  const others = (await getServiceLines()).filter((s) => s.slug !== current.slug);
+  if (others.length === 0) return null;
   return (
     <section className="border-t border-line py-12">
       <h2 className="mb-6 text-[15px] font-medium text-ink-2">ほかの事業</h2>
@@ -258,8 +259,9 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
               <span className="mx-2">/</span>
               <span>{line.kind}</span>
             </nav>
-            <div className="mb-2 text-[13px] tracking-[.08em] text-white/60">{line.kind}　{line.value}</div>
+            <div className="mb-2 text-[13px] tracking-[.08em] text-white/60">{line.kind}</div>
             <h1 className="text-[36px] font-medium leading-tight text-white/90 md:text-[52px]">{line.means}</h1>
+            <p className="mt-4 max-w-[640px] text-[15px] leading-relaxed text-white/75">{line.description}</p>
           </div>
         </header>
 

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getList } from "@/lib/strapi";
 import { MEMBERS } from "@/lib/members";
 import { getPosts } from "@/lib/payload";
-import { SERVICE_LINES } from "@/lib/services";
+import { getServiceLines } from "@/lib/services";
 
 const SITE_URL = "https://0utl1er.tech";
 
@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/services`, changeFrequency: "monthly", priority: 0.8 },
-    ...SERVICE_LINES.map((s) => ({
+    ...(await getServiceLines()).map((s) => ({
       url: `${SITE_URL}/services/${s.slug}`,
       changeFrequency: "monthly" as const,
       priority: 0.7,

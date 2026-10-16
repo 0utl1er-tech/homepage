@@ -634,13 +634,12 @@ html .next-error-h1 { border-right-color: var(--border-strong); }
   --svc-row: 190px;
   --svc-base: 150px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--svc-cols, 4), minmax(0, 1fr));
   grid-template-rows: auto var(--svc-row) var(--svc-row) var(--svc-base);
   gap: var(--svc-gap);
 }
 .svc-val { border-top: 3px solid var(--text-primary); padding: 14px 16px 26px 0; display: flex; flex-direction: column; gap: 4px; }
-.svc-kind { font-size: 12px; font-weight: 500; letter-spacing: .08em; color: var(--text-primary); opacity: .5; }
-.svc-value { font-size: 20px; font-weight: 500; color: var(--text-primary); opacity: .86; }
+.svc-kind { font-size: 20px; font-weight: 500; letter-spacing: .02em; color: var(--text-primary); opacity: .86; }
 .svc-note { font-size: 14px; line-height: 1.7; color: var(--text-primary); opacity: .58; }
 .svc-blk {
   position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
@@ -650,25 +649,20 @@ html .next-error-h1 { border-right-color: var(--border-strong); }
 .svc-blk:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
 .svc-ttl { font-size: clamp(17px, 1.55vw, 24px); font-weight: 400; word-break: keep-all; line-height: 1.35; letter-spacing: .02em; color: rgba(255,255,255,.78); transition: color .25s ease; }
 .svc-blk:hover .svc-ttl { color: rgba(255,255,255,.96); }
-.svc-v1 { grid-column: 1; grid-row: 1; } .svc-v2 { grid-column: 2; grid-row: 1; }
-.svc-v3 { grid-column: 3; grid-row: 1; } .svc-v4 { grid-column: 4; grid-row: 1; }
 .svc-ia {
-  grid-column: 1 / 4; grid-row: 2 / 5;
-  clip-path: polygon(0 0, calc((100% - 2 * var(--svc-gap)) / 3) 0, calc((100% - 2 * var(--svc-gap)) / 3) calc(100% - var(--svc-base)), 100% calc(100% - var(--svc-base)), 100% 100%, 0 100%);
+  --svc-first: calc((100% - (var(--svc-span, 3) - 1) * var(--svc-gap)) / var(--svc-span, 3));
+  clip-path: polygon(0 0, var(--svc-first) 0, var(--svc-first) calc(100% - var(--svc-base)), 100% calc(100% - var(--svc-base)), 100% 100%, 0 100%);
 }
 .svc-sw {
-  grid-column: 2 / 4; grid-row: 2 / 4;
   clip-path: polygon(0 0, calc(50% - var(--svc-gap) / 2) 0, calc(50% - var(--svc-gap) / 2) calc(var(--svc-row) + var(--svc-gap)), 100% calc(var(--svc-row) + var(--svc-gap)), 100% 100%, 0 100%);
 }
-.svc-bp { grid-column: 3; grid-row: 2; }
-.svc-ta { grid-column: 4; grid-row: 2 / 5; }
+.svc-solo { clip-path: none; }
 @media (max-width: 760px) {
   .svc-stack { grid-template-columns: 1fr; grid-template-rows: none; }
   .svc-val, .svc-blk { grid-column: 1 !important; grid-row: auto !important; clip-path: none !important; }
+  /* order はコンポーネント側で 列×2-1（上の段）/ 列×2（タイル）を付けている */
   .svc-blk { min-height: 180px; }
   .svc-ttl { font-size: 22px; }
-  .svc-v1 { order: 1 } .svc-ia { order: 2 } .svc-v2 { order: 3 } .svc-sw { order: 4 }
-  .svc-v3 { order: 5 } .svc-bp { order: 6 } .svc-v4 { order: 7 } .svc-ta { order: 8 }
   .svc-val { padding-top: 22px; padding-bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .svc-blk, .svc-ttl { transition: none; } }

@@ -90,6 +90,12 @@ export type Service = {
   steps?: { id?: string; name: string; duration?: string | null; detail?: string | null }[] | null;
   faqs?: { id?: string; q: string; a: string }[] | null;
   state?: "active" | "preparing" | null;
+  // 図の表示（2026-10-16）
+  kind?: string | null;
+  description?: string | null;
+  image?: Media | number | null;
+  shape?: "cloud" | "software" | "top" | "pillar" | "column" | null;
+  showInDiagram?: boolean | null;
   ctaLabel?: string | null;
   blogCategory?: Category | number | null;
   _status?: "draft" | "published" | null;
@@ -275,6 +281,16 @@ export const getCategoryBySlug = cache(async function getCategoryBySlug(
 });
 
 /* ---------- サービス（事業） ---------- */
+
+/** 公開済みのサービスを並び順で取る（事業内容の図・一覧用） */
+export const getServices = cache(async function getServices(): Promise<ListResult<Service>> {
+  const json = await getJson<ListResponse<Service>>(
+    `/api/services?${qs({ "where[_status][equals]": "published", depth: 1, limit: 50, sort: "order" })}`,
+    { tags: ["services"] }
+  );
+  if (!json) return { ok: false, docs: [] };
+  return { ok: true, docs: json.docs ?? [] };
+});
 
 /** サービスを1件。draft=true なら下書き（最新の版）を API キーで取る */
 export const getServiceBySlug = cache(async function getServiceBySlug(
