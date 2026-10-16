@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { NAV_ITEMS, type NavKey } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import { ThemeSegmented } from "@/components/theme-toggle";
 
 export function MobileMenu({ active }: { active?: NavKey }) {
   const [open, setOpen] = useState(false);
@@ -43,7 +44,7 @@ export function MobileMenu({ active }: { active?: NavKey }) {
       </button>
 
       {open && (
-        <div className="absolute inset-x-0 top-full border-b border-line bg-void">
+        <div className="absolute inset-x-0 top-full border-b border-[var(--header-border)] bg-[var(--header-bg)]">
           <div className="mx-auto flex max-w-[1200px] flex-col gap-1 px-6 py-3">
             {NAV_ITEMS.map((item) => (
               <Link
@@ -58,6 +59,7 @@ export function MobileMenu({ active }: { active?: NavKey }) {
                 {item.label}
               </Link>
             ))}
+            <ThemeSegmented className="mt-2 border-t border-line pt-4 pb-1" />
           </div>
         </div>
       )}

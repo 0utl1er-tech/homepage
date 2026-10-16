@@ -11,7 +11,7 @@ function NoCover() {
       >
         {BINARY_STRING + BINARY_STRING.slice(0, 12)}
       </span>
-      <span className="relative text-[22px] font-black tracking-[-0.04em] opacity-50">
+      <span aria-hidden className="relative text-[22px] font-black tracking-[-0.04em] opacity-50">
         <span className="text-brand">0</span>UTL<span className="text-cost">1</span>ER
       </span>
     </div>

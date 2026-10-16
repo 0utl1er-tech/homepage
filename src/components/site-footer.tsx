@@ -13,7 +13,7 @@ const SITEMAP = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-void">
+    <footer className="o-chrome border-t border-[var(--footer-border)] bg-[var(--footer-bg)]">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-6 pt-14 pb-7 md:grid-cols-[1.4fr_1fr_1fr] md:px-12">
         <div>
           <div className="mb-4">
@@ -71,7 +71,7 @@ export function SiteFooter() {
         <span className="font-mono text-xs text-ink-3">
           © 2026 0UTL1ER K.K. All rights reserved.
         </span>
-        <span className="font-mono text-xs text-ink-3 opacity-50">01000101</span>
+        <span aria-hidden className="font-mono text-xs text-ink-3 opacity-50">01000101</span>
       </div>
     </footer>
   );

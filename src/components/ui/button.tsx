@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-transparent bg-clip-padding font-semibold tracking-tight whitespace-nowrap transition-all duration-150 ease-out outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45 not-disabled:hover:-translate-y-px [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-transparent bg-clip-padding font-semibold tracking-tight whitespace-nowrap transition-all duration-150 ease-out select-none focus-visible:ring-3 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45 not-disabled:hover:-translate-y-px [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
@@ -13,7 +13,7 @@ const buttonVariants = cva(
           "bg-brand text-[var(--text-on-accent)] border-brand shadow-[var(--shadow-xs)] hover:bg-brand-hover hover:border-brand-hover",
         // DS: secondary
         secondary:
-          "bg-surface-2 text-ink border-line-strong hover:bg-surface-3 hover:border-[var(--navy-600)]",
+          "bg-surface-2 text-ink border-line-strong hover:bg-surface-3 hover:border-[var(--border-hover)]",
         // DS: ghost
         ghost:
           "bg-transparent text-ink-2 border-transparent hover:bg-surface-2 hover:text-ink",

@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AnalyticsScripts, GtmNoScript } from "@/components/analytics";
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/structured-data";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto",
@@ -17,6 +18,14 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    // ライトでもヘッダーは紺（globals.css の --header-bg）なので合わせる
+    { media: "(prefers-color-scheme: light)", color: "#0e1322" },
+    { media: "(prefers-color-scheme: dark)", color: "#06090f" },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://0utl1er.tech"),
@@ -90,8 +99,12 @@ export default function RootLayout({
     <html
       lang="ja"
       className={`${notoSansJP.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      // data-theme は下のインラインスクリプトが描画前に付ける
+      suppressHydrationWarning
     >
       <head>
+        {/* 保存済みの表示テーマを描画前に適用（ちらつき防止） */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <AnalyticsScripts />
         <OrganizationJsonLd />
         <WebSiteJsonLd />

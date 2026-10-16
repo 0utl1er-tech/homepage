@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 type Tone = "neutral" | "profit" | "cost" | "accent" | "revenue" | "warning";
 
 const palette: Record<Tone, { fg: string; bg: string; strong: string }> = {
-  neutral: { fg: "var(--slate-200)", bg: "rgba(139,150,178,0.14)", strong: "var(--slate-400)" },
+  neutral: { fg: "var(--neutral-strong)", bg: "var(--neutral-tint)", strong: "var(--text-muted)" },
   profit: { fg: "var(--profit-strong)", bg: "var(--profit-tint)", strong: "var(--profit)" },
   cost: { fg: "var(--cost-strong)", bg: "var(--cost-tint)", strong: "var(--cost)" },
-  accent: { fg: "var(--blue-300)", bg: "var(--blue-tint)", strong: "var(--accent)" },
-  revenue: { fg: "var(--cyan-400)", bg: "var(--cyan-tint)", strong: "var(--cyan-500)" },
-  warning: { fg: "var(--amber-400)", bg: "var(--amber-tint)", strong: "var(--amber-500)" },
+  accent: { fg: "var(--accent-strong)", bg: "var(--accent-tint)", strong: "var(--accent)" },
+  revenue: { fg: "var(--revenue)", bg: "var(--revenue-tint)", strong: "var(--revenue)" },
+  warning: { fg: "var(--warning-strong)", bg: "var(--warning-tint)", strong: "var(--warning)" },
 };
 
 /** Status label with optional leading dot. Mirrors the DS Badge. */

@@ -6,7 +6,7 @@ import { DSBadge } from "@/components/ds/ds-badge";
 import { trackEvent } from "@/lib/track";
 
 const inputCls =
-  "w-full rounded-md border border-line bg-surface px-[15px] py-[13px] text-sm text-ink outline-none transition-colors placeholder:text-ink-3 focus:border-brand";
+  "w-full rounded-md border border-input bg-surface px-[15px] py-[13px] text-sm text-ink outline-none transition-[color,border-color,box-shadow] placeholder:text-ink-3 focus:border-brand focus-visible:ring-3 focus-visible:ring-[var(--focus-ring)]";
 
 function Label({ children }: { children: React.ReactNode }) {
   return (

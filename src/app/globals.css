@@ -2,9 +2,22 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* `dark:` utilities follow the site theme, not only the OS setting. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media not (prefers-color-scheme: light) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
 /* =========================================================================
    0UTL1ER — Design tokens (ported from the Claude Design system)
-   Dark-mode-first. Profit = green, Cost = red, Revenue = cyan, Brand = blue.
+   Dark + light themes (see the theme blocks below).
+   Profit = green, Cost = red, Revenue = cyan, Brand = blue.
    ========================================================================= */
 :root {
   /* ---- Neutral ramp (deep navy → near-white) ---------------------------- */
@@ -64,6 +77,54 @@
   --amber-400: #fbbf24;
   --amber-tint: rgba(245, 158, 11, 0.14);
 
+  /* ---- Typography ------------------------------------------------------- */
+  --font-sans: var(--font-noto), "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+               "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-jetbrains), "SFMono-Regular", "Roboto Mono",
+               ui-monospace, "Courier New", monospace;
+
+  /* ---- Radius ----------------------------------------------------------- */
+  --radius-xs:   3px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-pill: 999px;
+  --radius:      0.625rem;
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast:   120ms;
+  --dur-base:   200ms;
+  --dur-slow:   360ms;
+
+  /* ===== shadcn semantic mapping ============================= */
+  --background:            var(--bg-void);
+  --foreground:            var(--text-primary);
+  --card:                  var(--surface-1);
+  --card-foreground:       var(--text-primary);
+  --popover:               var(--surface-1);
+  --popover-foreground:    var(--text-primary);
+  --primary:               var(--accent);
+  --primary-foreground:    var(--text-on-accent);
+  --secondary:             var(--surface-2);
+  --secondary-foreground:  var(--text-primary);
+  --muted:                 var(--surface-2);
+  --muted-foreground:      var(--text-muted);
+  --accent-color:          var(--surface-2);
+  --accent-foreground:     var(--text-primary);
+  --destructive:           var(--cost);
+  --border:                var(--border-default);
+  --ring:                  var(--accent);
+}
+
+/* ===== Dark theme (default) ============================================= */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
   /* ===== Semantic aliases ================================================ */
   --bg-app:        var(--navy-950);
   --bg-void:       var(--navy-1000);
@@ -100,20 +161,54 @@
   --revenue:       var(--cyan-400);
   --revenue-tint:  var(--cyan-tint);
 
-  /* ---- Typography ------------------------------------------------------- */
-  --font-sans: var(--font-noto), "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-               "Yu Gothic", Meiryo, system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-jetbrains), "SFMono-Regular", "Roboto Mono",
-               ui-monospace, "Courier New", monospace;
+  /* Text-on-tint, warning, misc. (added with light mode) */
+  --accent-strong:   var(--blue-300);
+  --neutral-tint:    rgba(139, 150, 178, 0.14);
+  --neutral-strong:  var(--slate-200);
+  --warning:         var(--amber-500);
+  --warning-strong:  var(--amber-400);
+  --warning-tint:    var(--amber-tint);
+  --warning-border:  rgba(245, 158, 11, 0.40);
+  --border-hover:    var(--navy-600);
+  --input:           var(--border-default);
+  --selection:       var(--blue-tint);
+  --scrollbar-thumb:       var(--navy-700);
+  --scrollbar-thumb-hover: var(--navy-600);
 
-  /* ---- Radius ----------------------------------------------------------- */
-  --radius-xs:   3px;
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   14px;
-  --radius-xl:   20px;
-  --radius-pill: 999px;
-  --radius:      0.625rem;
+  /* ---- Site chrome (header / footer) + wordmark --------------------------
+     Header and footer read these through `.o-chrome`, so how the chrome
+     looks per theme is a token-only change. In dark they mirror the page. */
+  --header-bg:       var(--bg-void);
+  --header-border:   var(--border-default);
+  --footer-bg:       var(--bg-void);
+  --footer-border:   var(--border-default);
+  --chrome-color-scheme:  dark;
+  --chrome-fg:            var(--text-primary);
+  --chrome-fg-2:          var(--text-secondary);
+  --chrome-fg-3:          var(--text-muted);
+  --chrome-surface-1:     var(--surface-1);
+  --chrome-surface-2:     var(--surface-2);
+  --chrome-surface-3:     var(--surface-3);
+  --chrome-border:        var(--border-default);
+  --chrome-border-strong: var(--border-strong);
+  --chrome-border-hover:  var(--border-hover);
+  --chrome-accent:        var(--accent);
+  --chrome-accent-hover:  var(--accent-hover);
+
+  /* Wordmark outside the chrome (e.g. the loading screen) … */
+  --wordmark-fg:        var(--text-primary);
+  --wordmark-0:         var(--accent);
+  --wordmark-1:         var(--cost);
+  --wordmark-kk:        var(--text-muted);
+  --wordmark-plate-bg:  transparent;
+  --wordmark-plate-pad: 0;
+  /* … and inside the header / footer. */
+  --chrome-wordmark-fg:        var(--wordmark-fg);
+  --chrome-wordmark-0:         var(--wordmark-0);
+  --chrome-wordmark-1:         var(--wordmark-1);
+  --chrome-wordmark-kk:        var(--wordmark-kk);
+  --chrome-wordmark-plate-bg:  var(--wordmark-plate-bg);
+  --chrome-wordmark-plate-pad: var(--wordmark-plate-pad);
 
   /* ---- Elevation -------------------------------------------------------- */
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.40);
@@ -122,34 +217,249 @@
   --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.55);
   --shadow-xl: 0 28px 70px rgba(0, 0, 0, 0.60);
   --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
 
-  /* ---- Motion ----------------------------------------------------------- */
-  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --dur-fast:   120ms;
-  --dur-base:   200ms;
-  --dur-slow:   360ms;
+/* ===== Light theme ========================================================
+   Applied when the visitor picks ライト (data-theme="light"), or when no
+   choice is stored and the OS prefers light. Keep both blocks identical
+   (the media-query copy is the same list, indented).
+   ========================================================================= */
+:root[data-theme="light"] {
+  color-scheme: light;
 
-  /* ===== shadcn semantic mapping (dark-only) ============================= */
-  --background:            var(--bg-void);
-  --foreground:            var(--text-primary);
-  --card:                  var(--surface-1);
-  --card-foreground:       var(--text-primary);
-  --popover:               var(--surface-1);
-  --popover-foreground:    var(--text-primary);
-  --primary:               var(--accent);
-  --primary-foreground:    var(--text-on-accent);
-  --secondary:             var(--surface-2);
-  --secondary-foreground:  var(--text-primary);
-  --muted:                 var(--surface-2);
-  --muted-foreground:      var(--text-muted);
-  --accent-color:          var(--surface-2);
-  --accent-foreground:     var(--text-primary);
-  --destructive:           var(--cost);
-  --border:                var(--border-default);
-  --input:                 var(--border-default);
-  --ring:                  var(--accent);
+  /* Calm warm-neutral paper, white cards, softly tinted bands. */
+  --bg-app:        #f4f6f9;
+  --bg-void:       #f7f8fa;
+  --surface-1:     #ffffff;
+  --surface-2:     #f1f4f8;
+  --surface-3:     #e7ebf2;
+  --surface-panel: #eef1f6;
+
+  --border-subtle:  rgba(14, 19, 34, 0.06);
+  --border-default: #e2e6ee;
+  --border-strong:  #cdd4e0;
+  --border-hover:   #b3bccb;
+  --border-accent:  #2563eb;
+  --input:          #8b95a8;
+
+  --text-primary:   #0e1322;
+  --text-secondary: #3f4a63;
+  --text-muted:     #566074;
+  --text-on-accent: #ffffff;
+  --text-disabled:  #9aa3b5;
+
+  --accent:        #2563eb;
+  --accent-hover:  #1d4ed8;
+  --accent-active: #1e40af;
+  --accent-tint:   rgba(37, 99, 235, 0.09);
+  --accent-strong: #1d4ed8;
+  --focus-ring:    rgba(37, 99, 235, 0.30);
+
+  --profit:        #15803d;
+  --profit-strong: #166534;
+  --profit-tint:   rgba(22, 163, 74, 0.10);
+  --profit-glow:   rgba(22, 163, 74, 0.22);
+  --cost:          #cc2b2b;
+  --cost-strong:   #b91c1c;
+  --cost-tint:     rgba(220, 38, 38, 0.08);
+  --cost-glow:     rgba(220, 38, 38, 0.20);
+  --revenue:       #0e7490;
+  --revenue-tint:  rgba(8, 145, 178, 0.10);
+
+  --neutral-tint:   rgba(86, 96, 116, 0.10);
+  --neutral-strong: #3f4a63;
+  --warning:        #d97706;
+  --warning-strong: #92400e;
+  --warning-tint:   rgba(245, 158, 11, 0.12);
+  --warning-border: rgba(217, 119, 6, 0.38);
+
+  --selection:             rgba(37, 99, 235, 0.18);
+  --scrollbar-thumb:       #cdd4e0;
+  --scrollbar-thumb-hover: #b3bccb;
+
+  /* ---- Site chrome + wordmark: option C (current default) -----------------
+     Navy header and footer framing a light page, so the wordmark keeps its
+     original navy look. To switch, replace this section (in BOTH light
+     blocks) with one of the presets in the comment below.
+
+     Option B — light chrome, wordmark always on a small navy plate:
+       --header-bg: #ffffff; --header-border: #e2e6ee;
+       --footer-bg: #eef1f6; --footer-border: #e2e6ee;
+       --chrome-color-scheme: light; --chrome-fg: #0e1322;
+       --chrome-fg-2: #3f4a63; --chrome-fg-3: #566074;
+       --chrome-surface-1: #ffffff; --chrome-surface-2: #f1f4f8;
+       --chrome-surface-3: #e7ebf2; --chrome-border: #e2e6ee;
+       --chrome-border-strong: #cdd4e0; --chrome-border-hover: #b3bccb;
+       --chrome-accent: #2563eb; --chrome-accent-hover: #1d4ed8;
+       --wordmark-fg: #eef1f8; --wordmark-0: #3b82f6; --wordmark-1: #ef4444;
+       --wordmark-kk: #566074;
+       --wordmark-plate-bg: #0e1322; --wordmark-plate-pad: 0.28em 0.45em;
+       --chrome-wordmark-*: same values as --wordmark-* above.
+
+     Option D — light chrome, softer slate for "UTL"/"ER":
+       chrome tokens as in option B;
+       --wordmark-fg: #3f4a63; --wordmark-0: #2563eb; --wordmark-1: #cc2b2b;
+       --wordmark-kk: #566074; --wordmark-plate-bg: transparent;
+       --wordmark-plate-pad: 0; --chrome-wordmark-*: same as --wordmark-*.
+     ------------------------------------------------------------------------ */
+  --header-bg:       #0e1322;
+  --header-border:   #222c45;
+  --footer-bg:       #0e1322;
+  --footer-border:   #222c45;
+  --chrome-color-scheme:  dark;
+  --chrome-fg:            #eef1f8;
+  --chrome-fg-2:          #aeb8d0;
+  --chrome-fg-3:          #8b96b2;
+  --chrome-surface-1:     #121829;
+  --chrome-surface-2:     #161d31;
+  --chrome-surface-3:     #1b2338;
+  --chrome-border:        #222c45;
+  --chrome-border-strong: #2b3656;
+  --chrome-border-hover:  #36436a;
+  --chrome-accent:        #5e9bff;
+  --chrome-accent-hover:  #93c0ff;
+
+  --wordmark-fg:        #0e1322;
+  --wordmark-0:         #2563eb;
+  --wordmark-1:         #cc2b2b;
+  --wordmark-kk:        #566074;
+  --wordmark-plate-bg:  transparent;
+  --wordmark-plate-pad: 0;
+  --chrome-wordmark-fg:        #eef1f8;
+  --chrome-wordmark-0:         #3b82f6;
+  --chrome-wordmark-1:         #ef4444;
+  --chrome-wordmark-kk:        #8b96b2;
+  --chrome-wordmark-plate-bg:  transparent;
+  --chrome-wordmark-plate-pad: 0;
+
+  /* Soft, navy-tinted elevation instead of heavy black. */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 8px 20px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.04);
+  --shadow-lg: 0 14px 36px rgba(16, 24, 40, 0.10);
+  --shadow-xl: 0 26px 60px rgba(16, 24, 40, 0.12);
+  --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+
+    /* Calm warm-neutral paper, white cards, softly tinted bands. */
+    --bg-app:        #f4f6f9;
+    --bg-void:       #f7f8fa;
+    --surface-1:     #ffffff;
+    --surface-2:     #f1f4f8;
+    --surface-3:     #e7ebf2;
+    --surface-panel: #eef1f6;
+
+    --border-subtle:  rgba(14, 19, 34, 0.06);
+    --border-default: #e2e6ee;
+    --border-strong:  #cdd4e0;
+    --border-hover:   #b3bccb;
+    --border-accent:  #2563eb;
+    --input:          #8b95a8;
+
+    --text-primary:   #0e1322;
+    --text-secondary: #3f4a63;
+    --text-muted:     #566074;
+    --text-on-accent: #ffffff;
+    --text-disabled:  #9aa3b5;
+
+    --accent:        #2563eb;
+    --accent-hover:  #1d4ed8;
+    --accent-active: #1e40af;
+    --accent-tint:   rgba(37, 99, 235, 0.09);
+    --accent-strong: #1d4ed8;
+    --focus-ring:    rgba(37, 99, 235, 0.30);
+
+    --profit:        #15803d;
+    --profit-strong: #166534;
+    --profit-tint:   rgba(22, 163, 74, 0.10);
+    --profit-glow:   rgba(22, 163, 74, 0.22);
+    --cost:          #cc2b2b;
+    --cost-strong:   #b91c1c;
+    --cost-tint:     rgba(220, 38, 38, 0.08);
+    --cost-glow:     rgba(220, 38, 38, 0.20);
+    --revenue:       #0e7490;
+    --revenue-tint:  rgba(8, 145, 178, 0.10);
+
+    --neutral-tint:   rgba(86, 96, 116, 0.10);
+    --neutral-strong: #3f4a63;
+    --warning:        #d97706;
+    --warning-strong: #92400e;
+    --warning-tint:   rgba(245, 158, 11, 0.12);
+    --warning-border: rgba(217, 119, 6, 0.38);
+
+    --selection:             rgba(37, 99, 235, 0.18);
+    --scrollbar-thumb:       #cdd4e0;
+    --scrollbar-thumb-hover: #b3bccb;
+
+    /* ---- Site chrome + wordmark: option C (presets B / D: see above) ---- */
+    --header-bg:       #0e1322;
+    --header-border:   #222c45;
+    --footer-bg:       #0e1322;
+    --footer-border:   #222c45;
+    --chrome-color-scheme:  dark;
+    --chrome-fg:            #eef1f8;
+    --chrome-fg-2:          #aeb8d0;
+    --chrome-fg-3:          #8b96b2;
+    --chrome-surface-1:     #121829;
+    --chrome-surface-2:     #161d31;
+    --chrome-surface-3:     #1b2338;
+    --chrome-border:        #222c45;
+    --chrome-border-strong: #2b3656;
+    --chrome-border-hover:  #36436a;
+    --chrome-accent:        #5e9bff;
+    --chrome-accent-hover:  #93c0ff;
+
+    --wordmark-fg:        #0e1322;
+    --wordmark-0:         #2563eb;
+    --wordmark-1:         #cc2b2b;
+    --wordmark-kk:        #566074;
+    --wordmark-plate-bg:  transparent;
+    --wordmark-plate-pad: 0;
+    --chrome-wordmark-fg:        #eef1f8;
+    --chrome-wordmark-0:         #3b82f6;
+    --chrome-wordmark-1:         #ef4444;
+    --chrome-wordmark-kk:        #8b96b2;
+    --chrome-wordmark-plate-bg:  transparent;
+    --chrome-wordmark-plate-pad: 0;
+
+    /* Soft, navy-tinted elevation instead of heavy black. */
+    --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+    --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+    --shadow-md: 0 8px 20px rgba(16, 24, 40, 0.08), 0 2px 6px rgba(16, 24, 40, 0.04);
+    --shadow-lg: 0 14px 36px rgba(16, 24, 40, 0.10);
+    --shadow-xl: 0 26px 60px rgba(16, 24, 40, 0.12);
+    --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Header / footer: re-point the semantic tokens at the chrome tokens so
+   everything inside (links, buttons, theme menu, wordmark) follows them. */
+.o-chrome {
+  color-scheme: var(--chrome-color-scheme);
+  --text-primary:   var(--chrome-fg);
+  --text-secondary: var(--chrome-fg-2);
+  --text-muted:     var(--chrome-fg-3);
+  --surface-1:      var(--chrome-surface-1);
+  --surface-2:      var(--chrome-surface-2);
+  --surface-3:      var(--chrome-surface-3);
+  --border-default: var(--chrome-border);
+  --border-strong:  var(--chrome-border-strong);
+  --border-hover:   var(--chrome-border-hover);
+  --accent:         var(--chrome-accent);
+  --accent-hover:   var(--chrome-accent-hover);
+  --foreground:     var(--chrome-fg);
+  --border:         var(--chrome-border);
+  --ring:           var(--chrome-accent);
+  --wordmark-fg:        var(--chrome-wordmark-fg);
+  --wordmark-0:         var(--chrome-wordmark-0);
+  --wordmark-1:         var(--chrome-wordmark-1);
+  --wordmark-kk:        var(--chrome-wordmark-kk);
+  --wordmark-plate-bg:  var(--chrome-wordmark-plate-bg);
+  --wordmark-plate-pad: var(--chrome-wordmark-plate-pad);
+  color: var(--text-primary);
 }
 
 @theme inline {
@@ -225,15 +535,15 @@
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    background: var(--navy-700);
+    background: var(--scrollbar-thumb);
     border-radius: var(--radius-pill);
     border: 2px solid transparent;
     background-clip: padding-box;
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--navy-600); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
   ::selection {
-    background: var(--blue-tint);
+    background: var(--selection);
     color: var(--text-primary);
   }
   :focus-visible {
@@ -311,3 +621,8 @@
 .o-prose .o-checklist { list-style: none; padding-left: 4px; }
 .o-prose .o-checklist li::before { content: "□"; margin-right: 8px; color: var(--text-muted); }
 .o-prose .o-checklist li[data-checked="true"]::before { content: "☑"; color: var(--profit); }
+
+/* Next.js's built-in 404 injects `body{color:#000;background:#fff}` that
+   follows the OS only. Keep it on the site theme (incl. an explicit choice). */
+html body { color: var(--text-primary); background: var(--bg-void); }
+html .next-error-h1 { border-right-color: var(--border-strong); }

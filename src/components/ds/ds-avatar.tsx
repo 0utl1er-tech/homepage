@@ -3,10 +3,10 @@ import * as React from "react";
 type Ring = "none" | "accent" | "profit" | "cost";
 
 const tints = [
-  "var(--blue-tint)",
-  "var(--cyan-tint)",
+  "var(--accent-tint)",
+  "var(--revenue-tint)",
   "var(--profit-tint)",
-  "rgba(245,158,11,0.16)",
+  "var(--warning-tint)",
   "rgba(124,58,237,0.18)",
   "rgba(236,72,153,0.16)",
 ];

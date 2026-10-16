@@ -12,17 +12,17 @@ export function Wordmark({
     <span className="inline-flex items-baseline gap-2.5">
       <span
         className={cn(
-          "font-black tracking-[-0.04em] leading-none",
+          "rounded-[var(--radius-sm)] bg-[var(--wordmark-plate-bg)] p-[var(--wordmark-plate-pad)] font-black tracking-[-0.04em] leading-none",
           className
         )}
       >
-        <span className="text-brand">0</span>
-        <span className="text-ink">UTL</span>
-        <span className="text-cost">1</span>
-        <span className="text-ink">ER</span>
+        <span className="text-[var(--wordmark-0)]">0</span>
+        <span className="text-[var(--wordmark-fg)]">UTL</span>
+        <span className="text-[var(--wordmark-1)]">1</span>
+        <span className="text-[var(--wordmark-fg)]">ER</span>
       </span>
       {kk && (
-        <span className="font-mono text-[11px] tracking-[0.1em] text-ink-3">
+        <span className="font-mono text-[11px] tracking-[0.1em] text-[var(--wordmark-kk)]">
           K.K.
         </span>
       )}

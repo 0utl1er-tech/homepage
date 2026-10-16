@@ -99,14 +99,14 @@ function ComparisonNotice({ post }: { post: Post }) {
   return (
     <aside
       aria-label="この記事について"
-      className="mb-10 rounded-lg border border-[var(--amber-500)]/40 bg-[var(--amber-tint)] p-5 md:p-6"
+      className="mb-10 rounded-lg border border-[var(--warning-border)] bg-[var(--warning-tint)] p-5 md:p-6"
     >
-      <div className="mb-2.5 text-sm font-bold text-[var(--amber-400)]">この記事について</div>
+      <div className="mb-2.5 text-sm font-bold text-[var(--warning-strong)]">この記事について</div>
       {c.disclosure && (
         <p className="whitespace-pre-line text-sm leading-relaxed text-ink">{c.disclosure}</p>
       )}
       {(c.checkedAt || c.method) && (
-        <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 border-t border-[var(--amber-500)]/25 pt-4 text-sm md:grid-cols-[auto_1fr]">
+        <dl className="mt-4 grid grid-cols-1 gap-x-6 gap-y-2 border-t border-[var(--warning-border)]/60 pt-4 text-sm md:grid-cols-[auto_1fr]">
           {c.checkedAt && (
             <>
               <dt className="font-bold text-ink-2">他社情報の確認日</dt>
