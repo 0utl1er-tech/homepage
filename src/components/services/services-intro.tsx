@@ -66,6 +66,11 @@ export function ServicesIntro({
 
   const current = active ? placed.find((l) => l.slug === active.slug) : null;
   const g = active?.geo;
+  const path = g
+    ? g.side === "l"
+      ? `M${g.dotX} ${g.dotY} L${g.dotX - 40} ${g.lineY} L${EDGE} ${g.lineY}`
+      : `M${g.dotX} ${g.dotY} L${g.dotX + 40} ${g.lineY} L${g.w - EDGE} ${g.lineY}`
+    : "";
 
   return (
     <div ref={wrap} className="relative mx-auto max-w-[1440px] px-6 pt-14 pb-20 md:px-8">
@@ -114,15 +119,8 @@ export function ServicesIntro({
       {g && current && (
         <div className="svc-co" aria-hidden="true" style={{ left: 0, top: 0, width: g.w, height: g.h }}>
           <svg width={g.w} height={g.h} viewBox={`0 0 ${g.w} ${g.h}`}>
-            <path
-              className="ln"
-              pathLength={1}
-              d={
-                g.side === "l"
-                  ? `M${g.dotX} ${g.dotY} L${g.dotX - 40} ${g.lineY} L${EDGE} ${g.lineY}`
-                  : `M${g.dotX} ${g.dotY} L${g.dotX + 40} ${g.lineY} L${g.w - EDGE} ${g.lineY}`
-              }
-            />
+            <path className="ln-halo" pathLength={1} d={path} />
+            <path className="ln" pathLength={1} d={path} />
             <circle className="pt" cx={g.dotX} cy={g.dotY} r={3.5} />
           </svg>
           <span
