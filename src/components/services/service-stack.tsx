@@ -39,10 +39,10 @@ export function ServiceStack() {
         ))}
       </div>
       <div className="mt-7 flex flex-wrap gap-x-7 gap-y-2 text-[13px] text-ink-2">
-        <span>IaaS ＝ 動く土台を、運用まで引き受ける</span>
-        <span>SaaS ＝ ソフトをそのまま使う</span>
+        <span>IaaS ＝ いま動いているものを引き取り、運用費を下げる</span>
+        <span>SaaS ＝ 作らずに、できあがった仕組みを使う</span>
         <span>BPaaS ＝ ソフトと人で業務ごと引き受ける</span>
-        <span>TaaS ＝ 人が入って完結させる</span>
+        <span>TaaS ＝ 0UTL1ER の技術者がお客様のチームに入る</span>
       </div>
     </div>
   );
