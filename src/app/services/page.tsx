@@ -21,7 +21,7 @@ export default function ServicesPage() {
           <div className="max-w-[360px] flex-[1_1_280px]">
             <h1 className="mb-5 text-[40px] font-semibold leading-tight md:text-[48px]">事業内容</h1>
             <p className="text-[15px] leading-[1.9] text-ink-2">
-              一番上が、お客様に届く価値。その下に、価値を支える手段が階段のように積み重なっています。写真を押すと、それぞれの事業のページに移ります。
+              一番上が、事業の形。その下に、それを支える手段が階段のように積み重なっています。写真を押すと、それぞれの事業のページに移ります。
             </p>
           </div>
           <div className="min-w-0 flex-[999_1_720px]">
