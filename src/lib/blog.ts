@@ -147,17 +147,21 @@ export const ENTRANCES: {
   label: string;
   eyebrow: string;
   lead: string;
+  /** 入口カードの写真（public/images/blog/CREDITS.md） */
+  image: { src: string; alt: string };
 }[] = [
   {
     audience: "local",
     label: "お店の集客の話",
     eyebrow: "お店・地域の事業者さま向け",
     lead: "Googleマップやホームページで、お客さんに見つけてもらうための話。",
+    image: { src: "/images/blog/entrance-local.jpg", alt: "自転車が並ぶ通りに面した、小さなコーヒー店の店先" },
   },
   {
     audience: "business",
     label: "開発・インフラの話",
     eyebrow: "企業のIT担当者さま・エンジニア向け",
     lead: "システム開発とサーバー運用の、実際の記録。",
+    image: { src: "/images/blog/entrance-tech.jpg", alt: "ケーブルがつながったサーバーラック" },
   },
 ];

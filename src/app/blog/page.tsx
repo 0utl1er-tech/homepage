@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { connection } from "next/server";
 import { SiteNav } from "@/components/site-nav";
@@ -58,13 +59,37 @@ export default async function BlogPage() {
             const list = genres.filter((g) => g.audience === ent.audience);
             const first = list[0];
             return (
-              <DSCard key={ent.audience} className="flex flex-col">
+              <DSCard key={ent.audience} className="group/card flex flex-col">
+                {/* 写真で入口を示す（Stripe 型）。写真は対象の客がひと目で分かるもの */}
+                <Link
+                  href={first ? `/blog/category/${first.slug}` : "/blog"}
+                  className="relative block aspect-[16/9] overflow-hidden bg-surface-2"
+                  tabIndex={-1}
+                  aria-hidden
+                >
+                  <Image
+                    src={ent.image.src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 560px, 100vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.03] motion-reduce:transition-none"
+                    priority
+                  />
+                </Link>
                 <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <div className="mb-3 text-[13px] font-medium text-ink-3">{ent.eyebrow}</div>
-                  <h2 className="mb-3 text-2xl font-extrabold tracking-tight">{ent.label}</h2>
-                  <p className="mb-6 max-w-[440px] text-sm leading-relaxed text-ink-2">{ent.lead}</p>
+                  <div className="mb-2 text-[13px] font-medium text-ink-3">{ent.eyebrow}</div>
+                  <h2 className="mb-3 text-2xl font-extrabold tracking-tight">
+                    {first ? (
+                      <Link href={`/blog/category/${first.slug}`} className="transition-colors hover:text-brand">
+                        {ent.label}
+                      </Link>
+                    ) : (
+                      ent.label
+                    )}
+                  </h2>
+                  <p className="mb-5 max-w-[440px] text-sm leading-relaxed text-ink-2">{ent.lead}</p>
                   {list.length > 0 && (
-                    <ul className="flex flex-wrap gap-2">
+                    <ul className="mb-6 flex flex-wrap gap-2">
                       {list.map((g) => (
                         <li key={g.slug}>
                           <Link
@@ -77,17 +102,12 @@ export default async function BlogPage() {
                       ))}
                     </ul>
                   )}
+                  {first && (
+                    <Link href={`/blog/category/${first.slug}`} className="o-arrow mt-auto">
+                      記事を読む →
+                    </Link>
+                  )}
                 </div>
-                {first && (
-                  // カードの行き先は下端いっぱいのバーで示す（左端の色線は使わない）
-                  <Link
-                    href={`/blog/category/${first.slug}`}
-                    className="group flex min-h-12 items-center justify-center gap-2 bg-brand px-6 text-[15px] font-bold text-[var(--text-on-accent)] transition-colors hover:bg-brand-hover"
-                  >
-                    {first.name}の記事を読む
-                    <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transition-none">→</span>
-                  </Link>
-                )}
               </DSCard>
             );
           })}
