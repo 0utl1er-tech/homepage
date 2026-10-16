@@ -22,6 +22,8 @@ export type ServiceLine = {
   description: string;
   /** 手段の名前（図のタイル） */
   means: string;
+  /** 図の注釈（カーソルを乗せたときに出る、図の中での位置づけの説明） */
+  note: string;
   /** 詳細ページの冒頭（Payload の summary が無いとき） */
   summary: string;
   image: string;
@@ -35,6 +37,7 @@ export const FALLBACK_LINES: ServiceLine[] = [
     kind: "IaaS",
     description: "お客様がすでにご利用されているデジタル資産の運用を支援する事業です。",
     means: "マネージドクラウド",
+    note: "すべての事業を支える土台です。ソフトウェアもコンサルティングも、この上で動いています。お客様がすでにお持ちのホームページや業務システムも、ここに移して運用できます。",
     summary: "いま動いているホームページや業務システムを、中身はそのまま引き取り、自社のクラウドで運用します。お客様の手間は増やさずに、維持にかかる費用を下げます。",
     image: "/images/services/cloud.jpg",
     imageAlt: "サーバーラック",
@@ -45,6 +48,7 @@ export const FALLBACK_LINES: ServiceLine[] = [
     kind: "SaaS",
     description: "自社で開発したソフトウェアを、月額でご利用いただく事業です。",
     means: "ソフトウェア",
+    note: "マネージドクラウド上に展開されているソフトウェアです。コンサルティングや、お客様のサービス向上にご利用いただけます。",
     summary: "顧客管理や集客の分析など、本来なら開発が必要な仕組みを、作らずに月額ですぐ使える形でご提供します。",
     image: "/images/services/software.jpg",
     imageAlt: "カフェのカウンターに置いたタブレットのレジ",
@@ -55,6 +59,7 @@ export const FALLBACK_LINES: ServiceLine[] = [
     kind: "BPaaS",
     description: "ソフトウェアと担当者をひと組にして、集客の業務をお引き受けする事業です。",
     means: "コンサルティング",
+    note: "ソフトウェアの上に、担当者が加わった形です。集まった数字をもとに人が判断し、お客様の集客の業務を動かします。",
     summary: "ソフトウェアと担当者がひと組になり、集客の業務を丸ごと引き受けます。",
     image: "/images/services/consulting.jpg",
     imageAlt: "二人で同じノートパソコンを見ながら進める様子",
@@ -65,6 +70,7 @@ export const FALLBACK_LINES: ServiceLine[] = [
     kind: "TaaS",
     description: "0UTL1ER の技術者が、お客様のチームの一員として働く事業です。",
     means: "スペシャリスト",
+    note: "土台やソフトウェアとは独立した、人そのものの事業です。0UTL1ER の技術者が、お客様のチームに入って働きます。",
     summary: "事業をお預かりするのではなく、0UTL1ER の技術者がお客様のチームの一員として働きます。",
     image: "/images/services/specialist.jpg",
     imageAlt: "暗い部屋で2台のモニターに向かう技術者",
@@ -83,6 +89,7 @@ function fromService(s: Service): ServiceLine | null {
     kind: s.kind || fb?.kind || "",
     description: s.description || fb?.description || "",
     means: s.name || fb?.means || "",
+    note: s.diagramNote || fb?.note || s.description || fb?.description || "",
     summary: s.summary || fb?.summary || "",
     image: img || fb?.image || "",
     imageAlt: alt || fb?.imageAlt || s.name,

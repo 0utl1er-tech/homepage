@@ -95,6 +95,7 @@ export type Service = {
   description?: string | null;
   image?: Media | number | null;
   shape?: "cloud" | "software" | "top" | "pillar" | "column" | null;
+  diagramNote?: string | null;
   showInDiagram?: boolean | null;
   ctaLabel?: string | null;
   blogCategory?: Category | number | null;

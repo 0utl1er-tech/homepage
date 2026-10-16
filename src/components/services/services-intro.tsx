@@ -134,7 +134,7 @@ export function ServicesIntro({
             }}
           >
             <span className="t">{current.means}</span>
-            <span className="d">{current.description}</span>
+            <span className="d">{current.note}</span>
           </span>
         </div>
       )}
