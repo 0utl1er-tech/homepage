@@ -8,7 +8,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { CtaBand } from "@/components/cta-band";
 import { DraftBanner } from "@/components/blog/draft-banner";
 import { BreadcrumbJsonLd } from "@/components/blog/json-ld";
-import { getServiceBySlug, type Service } from "@/lib/payload";
+import { Downloads } from "@/components/downloads";
+import { getServiceBySlug, isObj, type Service } from "@/lib/payload";
 import { getServiceLine, getServiceLines, type ServiceLine } from "@/lib/services";
 
 /* 事業の詳細ページ（/services/iaas・saas・bpaas・taas）。
@@ -64,6 +65,7 @@ function Body({ service }: { service: Service }) {
   const plans = service.plans ?? [];
   const steps = service.steps ?? [];
   const faqs = service.faqs ?? [];
+  const downloads = (service.downloads ?? []).filter((d) => isObj(d.file));
   const hasPricing =
     plans.length > 0 || service.minimumTerm || service.cancellation || service.excluded;
 
@@ -199,6 +201,12 @@ function Body({ service }: { service: Service }) {
               </details>
             ))}
           </div>
+        </Section>
+      )}
+
+      {downloads.length > 0 && (
+        <Section title="資料">
+          <Downloads items={downloads} heading={null} />
         </Section>
       )}
     </>

@@ -7,7 +7,8 @@
  * ===========================================================================*/
 import * as React from "react";
 import type { LexicalNode, LexicalRoot, Media, Post } from "@/lib/payload";
-import { mediaUrl } from "@/lib/payload";
+import { isImageMedia, mediaUrl } from "@/lib/payload";
+import { FileLink } from "@/components/file-link";
 
 /* ---------- 目次 ---------- */
 
@@ -210,6 +211,14 @@ function renderNode(node: LexicalNode, key: React.Key, ctx: Ctx): React.ReactNod
       const src = mediaUrl(media as Media);
       if (!src || typeof media !== "object") return null;
       const caption = typeof node.fields?.caption === "string" ? node.fields.caption : null;
+      // 画像以外（PDF など）は本文中に資料リンクとして出す。キャプションは一言の説明に回す
+      if (!isImageMedia(media)) {
+        return (
+          <div key={key} className="my-6">
+            <FileLink media={media} note={caption} />
+          </div>
+        );
+      }
       return (
         <figure key={key}>
           {/* eslint-disable-next-line @next/next/no-img-element */}

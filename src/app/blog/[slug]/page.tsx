@@ -10,6 +10,7 @@ import { DSAvatar } from "@/components/ds/ds-avatar";
 import { DraftBanner } from "@/components/blog/draft-banner";
 import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/blog/json-ld";
 import { LexicalContent, buildToc, contentLength, type TocItem } from "@/components/blog/lexical";
+import { Downloads } from "@/components/downloads";
 import { PostList } from "@/components/blog/post-list";
 import { BLOG_OG_IMAGE, genreCta, genreDefault } from "@/lib/blog";
 import { getMember } from "@/lib/members";
@@ -313,6 +314,12 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             <ComparisonNotice post={post} />
 
             <LexicalContent content={post.content} ids={ids} />
+
+            {(post.downloads ?? []).some((d) => isObj(d.file)) && (
+              <div className="mt-12 border-t border-line pt-8">
+                <Downloads items={post.downloads} heading="資料" />
+              </div>
+            )}
 
             {post.tags && post.tags.length > 0 && (
               <ul className="mt-10 flex flex-wrap gap-2">

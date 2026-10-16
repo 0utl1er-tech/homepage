@@ -53,9 +53,21 @@ export type Media = {
   id: number;
   alt?: string | null;
   url?: string | null;
+  // 画像以外（PDF・PowerPoint など）も同じコレクションに入る。filename/mimeType/filesize で見分ける
+  filename?: string | null;
+  filesize?: number | null;
+  mimeType?: string | null;
   width?: number | null;
   height?: number | null;
   sizes?: Record<string, { url?: string | null; width?: number | null; height?: number | null }>;
+};
+
+/** 記事・サービスに添付する配布資料（PDF・PowerPoint・Word・Excel・ZIP） */
+export type Download = {
+  id?: string;
+  file: Media | number;
+  label?: string | null;
+  note?: string | null;
 };
 
 export type Member = {
@@ -99,6 +111,7 @@ export type Service = {
   showInDiagram?: boolean | null;
   ctaLabel?: string | null;
   blogCategory?: Category | number | null;
+  downloads?: Download[] | null;
   _status?: "draft" | "published" | null;
 };
 
@@ -149,6 +162,7 @@ export type Post = {
   } | null;
   zenn?: { url?: string | null } | null;
   note?: { url?: string | null } | null;
+  downloads?: Download[] | null;
   _status?: "draft" | "published" | null;
 };
 
@@ -348,6 +362,35 @@ export function formatDateDot(iso?: string | null): string {
   }).formatToParts(d);
   const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
   return `${get("year")}.${get("month")}.${get("day")}`;
+}
+
+/** 画像かどうか。mimeType が無い古いデータは拡張子で判断する */
+export function isImageMedia(media: Media | number | null | undefined): boolean {
+  if (!isObj(media)) return false;
+  if (media.mimeType) return media.mimeType.startsWith("image/");
+  const name = media.filename ?? media.url ?? "";
+  return /\.(png|jpe?g|gif|webp|avif|svg)(\?|$)/i.test(name);
+}
+
+/** ファイルの種類の表示名。mimeType か filename から "PDF" "PowerPoint" などを返す */
+export function fileKindLabel(mimeOrName?: string | null): string {
+  const s = (mimeOrName ?? "").toLowerCase();
+  if (!s) return "ファイル";
+  if (s.includes("pdf")) return "PDF";
+  if (s.includes("presentation") || s.includes("powerpoint") || /\.pptx?$/.test(s)) return "PowerPoint";
+  if (s.includes("wordprocessing") || s.includes("msword") || /\.docx?$/.test(s)) return "Word";
+  if (s.includes("spreadsheet") || s.includes("ms-excel") || /\.xlsx?$/.test(s)) return "Excel";
+  if (s.includes("zip") || /\.zip$/.test(s)) return "ZIP";
+  return "ファイル";
+}
+
+/** バイト数 → "2.3MB" / "840KB"（1MB 未満は KB 整数、以上は小数1桁） */
+export function formatBytes(n?: number | null): string {
+  if (!n || n <= 0) return "";
+  if (n < 1024) return `${n}B`;
+  if (n < 1024 * 1024) return `${Math.round(n / 1024)}KB`;
+  const mb = n / (1024 * 1024);
+  return `${mb >= 100 ? Math.round(mb) : mb.toFixed(1).replace(/\.0$/, "")}MB`;
 }
 
 /** 公開されていない関連先（id のまま返ってくる）を除いて、記事だけを取り出す */
