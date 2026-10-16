@@ -50,8 +50,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-async function Businesses({ frameSlug }: { frameSlug: string }) {
-  const { docs } = await getBusinesses({ frameSlug });
+async function Businesses({ frameSlug, draft }: { frameSlug: string; draft: boolean }) {
+  const { docs } = await getBusinesses({ frameSlug, draft });
   const items = docs.filter((b) => b.showOnFrame !== false);
   if (items.length === 0) return null;
   return (
@@ -136,7 +136,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
             )}
           </div>
 
-          <Businesses frameSlug={line.slug} />
+          <Businesses frameSlug={line.slug} draft={draft} />
           {hasLpSections(service) && <LpSections data={service} />}
           <OtherLines current={line} />
         </div>

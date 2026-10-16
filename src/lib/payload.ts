@@ -355,17 +355,20 @@ export const getServiceBySlug = cache(async function getServiceBySlug(
 
 /** 公開済みの事業を並び順で取る。frameSlug を渡すとその提供の形のものだけ。社内向け（internal）は除く */
 export const getBusinesses = cache(async function getBusinesses(
-  q: { frameSlug?: string } = {}
+  q: { frameSlug?: string; draft?: boolean } = {}
 ): Promise<ListResult<Business>> {
+  // draft=true（下書きプレビュー中）は公開前の事業も一覧に出す（API キーで取る）
   const params: Record<string, string | number | undefined> = {
-    "where[_status][equals]": "published",
     "where[state][not_equals]": "internal",
     "where[frame.slug][equals]": q.frameSlug,
     depth: 1,
     limit: 100,
     sort: "order",
   };
+  if (q.draft) params.draft = "true";
+  else params["where[_status][equals]"] = "published";
   const json = await getJson<ListResponse<Business>>(`/api/businesses?${qs(params)}`, {
+    draft: q.draft,
     tags: ["businesses"],
   });
   if (!json) return { ok: false, docs: [] };

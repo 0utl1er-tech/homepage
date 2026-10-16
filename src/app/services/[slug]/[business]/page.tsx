@@ -103,8 +103,8 @@ function Products({ items }: { items: NonNullable<Business["products"]> }) {
   );
 }
 
-async function Siblings({ line, current }: { line: ServiceLine; current: Business }) {
-  const { docs } = await getBusinesses({ frameSlug: line.slug });
+async function Siblings({ line, current, draft }: { line: ServiceLine; current: Business; draft: boolean }) {
+  const { docs } = await getBusinesses({ frameSlug: line.slug, draft });
   const others = docs.filter((b) => b.id !== current.id);
   if (others.length === 0) return null;
   return (
@@ -175,7 +175,7 @@ export default async function BusinessPage({ params }: { params: Params }) {
 
           <Products items={products} />
           <LpSections data={business} />
-          <Siblings line={line} current={business} />
+          <Siblings line={line} current={business} draft={draft} />
         </div>
       </article>
 
