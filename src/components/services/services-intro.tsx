@@ -27,7 +27,7 @@ const DOT_FROM_BOTTOM: Record<ServiceShape, number> = {
 };
 
 /** 注釈の文字の幅と、線の端から文字までの余白 */
-const LABEL_W = 220;
+const LABEL_W = 200;
 const EDGE = 0;
 
 type Geo = { w: number; h: number; dotX: number; dotY: number; lineY: number; side: "l" | "r" };
