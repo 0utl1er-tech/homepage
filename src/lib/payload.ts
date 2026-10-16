@@ -88,6 +88,14 @@ export type Category = {
   order?: number | null;
 };
 
+/** 技術マップ（ツリー）の項目。breadcrumbs は根から自分までの道筋（Payload が保存時に計算） */
+export type Topic = {
+  id: number;
+  name: string;
+  slug: string;
+  breadcrumbs?: { doc?: number | Topic | null; label?: string | null; url?: string | null }[] | null;
+};
+
 export type PostType = "guide" | "comparison" | "tech" | "case-story" | "essay";
 
 export type Post = {
@@ -98,6 +106,8 @@ export type Post = {
   content?: LexicalRoot | null;
   cover?: Media | number | null;
   category?: Category | number | null;
+  channel?: "marketing" | "tech" | "company" | null;
+  primaryTopic?: Topic | number | null;
   type?: PostType | null;
   tags?: string[] | null;
   author?: Member | number | null;

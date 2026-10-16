@@ -152,6 +152,10 @@ export default async function BlogPostPage({ params }: { params: Params }) {
   }
 
   const category = isObj(post.category) ? post.category : null;
+  // 技術マップ上の場所（例: テック › 開発 › アプリケーション › フロントエンド › Next.js）
+  const topicPath = isObj(post.primaryTopic)
+    ? (post.primaryTopic.breadcrumbs ?? []).map((b) => b.label ?? "").filter(Boolean)
+    : [];
   const author = isObj(post.author) ? post.author : null;
   const authorHasPage = !!(author && getMember(author.slug));
   const photo = author ? mediaUrl(author.photo, "thumb") ?? mediaUrl(author.photo) : null;
@@ -228,6 +232,12 @@ export default async function BlogPostPage({ params }: { params: Params }) {
               </h1>
               {post.description && (
                 <p className="mt-5 text-[15px] leading-relaxed text-ink-2">{post.description}</p>
+              )}
+              {topicPath.length > 0 && (
+                <p className="mt-5 text-[13px] text-ink-3">
+                  <span className="mr-2">この記事の場所</span>
+                  <span className="text-ink-2">{topicPath.join(" › ")}</span>
+                </p>
               )}
             </div>
 
