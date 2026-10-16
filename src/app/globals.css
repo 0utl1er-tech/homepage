@@ -666,3 +666,21 @@ html .next-error-h1 { border-right-color: var(--border-strong); }
   .svc-val { padding-top: 22px; padding-bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { .svc-blk, .svc-ttl { transition: none; } }
+
+/* ---- 事業内容の図の注釈: カーソルを乗せると点から線が左へ伸び、左の余白に説明が出る ---- */
+.svc-co { position: absolute; pointer-events: none; z-index: 3; }
+.svc-co svg { position: absolute; left: 0; top: 0; overflow: visible; mix-blend-mode: difference; }
+.svc-co .ln { fill: none; stroke: #ffffff; stroke-width: 1.2; stroke-dasharray: 1; stroke-dashoffset: 1; animation: svc-draw .6s cubic-bezier(.4,0,.2,1) forwards; }
+.svc-co .pt { fill: #ffffff; transform-origin: center; transform-box: fill-box; animation: svc-pop .18s ease forwards; }
+.svc-co .lb { position: absolute; color: var(--text-primary); opacity: 0; animation: svc-fade .25s ease .35s forwards; }
+.svc-co .lb .t { display: block; font-size: 17px; font-weight: 500; letter-spacing: .02em; }
+.svc-co .lb .d { display: block; font-size: 13px; line-height: 1.75; color: var(--text-secondary); margin-top: 4px; }
+@keyframes svc-draw { to { stroke-dashoffset: 0; } }
+@keyframes svc-pop { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes svc-fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+/* 図は中央に。1280px 以上では左右に注釈の余白（各 240px）を空ける */
+.svc-fig { width: 100%; margin: 0 auto; }
+@media (min-width: 1280px) { .svc-fig { width: min(900px, 100% - 480px); } }
+@media (max-width: 1279.98px) { .svc-co { display: none; } }
+@media (hover: none) { .svc-co { display: none; } }
+@media (prefers-reduced-motion: reduce) { .svc-co .ln, .svc-co .pt, .svc-co .lb { animation-duration: 0s; animation-delay: 0s; } }

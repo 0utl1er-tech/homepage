@@ -17,17 +17,7 @@ export default function ServicesPage() {
       <SiteNav active="services" />
 
       <section className="border-b border-line">
-        <div className="mx-auto flex max-w-[1320px] flex-wrap items-start gap-x-14 gap-y-6 px-6 pt-14 pb-20 md:px-8">
-          <div className="max-w-[360px] flex-[1_1_280px]">
-            <h1 className="mb-5 text-[40px] font-semibold leading-tight md:text-[48px]">事業内容</h1>
-            <p className="text-[15px] leading-[1.9] text-ink-2">
-              一番上が、事業の形。その下に、それを支える手段が階段のように積み重なっています。写真を押すと、それぞれの事業のページに移ります。
-            </p>
-          </div>
-          <div className="min-w-0 flex-[999_1_720px]">
-            <ServiceStack />
-          </div>
-        </div>
+        <ServiceStack lead="一番上が、事業の形。その下に、それを支える手段が階段のように積み重なっています。写真を押すと、それぞれの事業のページに移ります。" />
       </section>
 
       <CtaBand
