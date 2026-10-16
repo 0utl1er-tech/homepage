@@ -1,6 +1,6 @@
 /* =============================================================================
  * 下書きプレビューの入口。Payload の「プレビュー」ボタンから開かれる。
- *   GET /api/preview?secret=<PREVIEW_SECRET>&path=/blog/<slug>
+ *   GET /api/preview?secret=<PREVIEW_SECRET>&path=/blog/<slug> または /services/<slug>
  * 合言葉が合えば Next.js の draft mode を有効にして、その記事へ移る。
  * 記事ページは draft mode のとき Payload から下書き（PAYLOAD_API_KEY で認証）を読む。
  *
@@ -27,7 +27,7 @@ export async function GET(request: Request) {
   }
   const path = safeBlogPath(searchParams.get("path"));
   if (!path) {
-    return new Response("path には /blog/ で始まるパスを指定してください。", { status: 400 });
+    return new Response("path には /blog/ か /services/ で始まるパスを指定してください。", { status: 400 });
   }
 
   (await draftMode()).enable();
