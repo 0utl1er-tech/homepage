@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DSBadge } from "@/components/ds/ds-badge";
 import { trackEvent } from "@/lib/track";
@@ -18,9 +18,23 @@ function Label({ children }: { children: React.ReactNode }) {
 
 type Status = "idle" | "sending" | "error" | "too_many";
 
+// ご用件。Payload 側で営業・ご提案の振り分けに使う
+const PURPOSES = [
+  { value: "inquiry", label: "サービスについてのご相談" },
+  { value: "estimate", label: "お見積もりのご依頼" },
+  { value: "recruit", label: "採用について" },
+  { value: "sales", label: "弊社への営業・ご提案" },
+] as const;
+
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
+  const [purpose, setPurpose] = useState<string>("inquiry");
+  // フォームが表示されてから送信までの経過時間（ミリ秒）。画面には出さない
+  const mountedAt = useRef<number | null>(null);
+  useEffect(() => {
+    mountedAt.current = performance.now();
+  }, []);
 
   if (submitted) {
     return (
@@ -56,6 +70,10 @@ export function ContactForm() {
             body: JSON.stringify({
               ...Object.fromEntries(fd.entries()),
               page: document.referrer ? new URL(document.referrer).pathname : "",
+              elapsedMs:
+                mountedAt.current === null
+                  ? 0
+                  : Math.max(0, Math.round(performance.now() - mountedAt.current)),
             }),
           });
           if (res.status === 429) return setStatus("too_many");
@@ -63,6 +81,7 @@ export function ContactForm() {
           // GA4 のキーイベント（問い合わせ）。届いたときだけ送る
           trackEvent("generate_lead", { form_id: "contact" });
           form.reset();
+          setPurpose("inquiry");
           setStatus("idle");
           setSubmitted(true);
         } catch {
@@ -70,6 +89,29 @@ export function ContactForm() {
         }
       }}
     >
+      <div className="sm:col-span-2">
+        <Label>
+          ご用件 <span className="text-cost">*</span>
+        </Label>
+        <select
+          className={inputCls}
+          name="purpose"
+          value={purpose}
+          onChange={(e) => setPurpose(e.target.value)}
+          required
+        >
+          {PURPOSES.map((p) => (
+            <option key={p.value} value={p.value}>
+              {p.label}
+            </option>
+          ))}
+        </select>
+        {purpose === "sales" ? (
+          <p className="mt-2 text-xs leading-relaxed text-ink-3">
+            営業・ご提案は内容を確認のうえ、必要な場合のみご連絡します。
+          </p>
+        ) : null}
+      </div>
       <div className="sm:col-span-2">
         <Label>会社名</Label>
         <input className={inputCls} name="company" type="text" placeholder="0UTL1ER株式会社" />

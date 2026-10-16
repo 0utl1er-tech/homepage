@@ -19,11 +19,22 @@ type Body = {
   phone?: unknown;
   message?: unknown;
   page?: unknown;
+  purpose?: unknown; // ご用件（inquiry / estimate / recruit / sales）
+  elapsedMs?: unknown; // フォーム表示から送信までの経過時間（ミリ秒）
   website?: unknown; // 隠し項目（人間は入力しない）
 };
 
 const LIMITS = { company: 200, name: 100, email: 254, phone: 40, message: 5000, page: 300 };
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PURPOSES = new Set(["inquiry", "estimate", "recruit", "sales"]);
+const MAX_ELAPSED_MS = 86_400_000; // 1日
+
+// 経過時間は 0 以上の整数に丸め、上限で切る。無い・壊れている場合は 0
+function elapsed(v: unknown) {
+  const n = typeof v === "number" ? v : typeof v === "string" ? Number(v) : NaN;
+  if (!Number.isFinite(n) || n < 0) return 0;
+  return Math.min(Math.round(n), MAX_ELAPSED_MS);
+}
 
 // IP ごとの送信回数（10分で5回まで）。Pod ごとのメモリなので目安程度。
 const WINDOW_MS = 10 * 60 * 1000;
@@ -67,6 +78,11 @@ export async function POST(request: Request) {
   if (!data.name || !data.message || !EMAIL_RE.test(data.email)) {
     return Response.json({ ok: false, error: "required" }, { status: 400 });
   }
+  const purpose = str(body.purpose, 20);
+  if (!PURPOSES.has(purpose)) {
+    return Response.json({ ok: false, error: "purpose" }, { status: 400 });
+  }
+  const elapsedMs = elapsed(body.elapsedMs);
 
   const base = process.env.PAYLOAD_INTERNAL_URL;
   const token = process.env.FORM_SUBMIT_TOKEN;
@@ -81,9 +97,13 @@ export async function POST(request: Request) {
     headers: { "Content-Type": "application/json", "x-form-token": token },
     body: JSON.stringify({
       form: Number(formId),
-      submissionData: Object.entries(data)
-        .filter(([, value]) => value)
-        .map(([field, value]) => ({ field, value })),
+      submissionData: [
+        ...Object.entries(data)
+          .filter(([, value]) => value)
+          .map(([field, value]) => ({ field, value })),
+        { field: "purpose", value: purpose },
+        { field: "elapsedMs", value: String(elapsedMs) },
+      ],
     }),
   }).catch((err: unknown) => {
     console.error("contact: Payload に届かない", err);
