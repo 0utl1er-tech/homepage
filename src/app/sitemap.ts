@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getList } from "@/lib/strapi";
 import { MEMBERS } from "@/lib/members";
-import { getPosts } from "@/lib/payload";
+import { businessFrameSlug, getBusinesses, getPosts } from "@/lib/payload";
 import { getServiceLines } from "@/lib/services";
 
 const SITE_URL = "https://0utl1er.tech";
@@ -31,6 +31,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })),
   ];
+
+  // 事業（Payload の公開済み・社内向け以外）。提供の形の URL 名が取れないものは載せない
+  const businessRoutes: MetadataRoute.Sitemap = [];
+  const businesses = await getBusinesses();
+  for (const b of businesses.docs) {
+    const frame = businessFrameSlug(b);
+    if (!frame) continue;
+    businessRoutes.push({
+      url: `${SITE_URL}/services/${frame}/${b.slug}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
 
   // Strapi 記事（未接続時はサンプルのスラッグ）を動的に追加。
   // ビルドが取得失敗で落ちないよう握りつぶす。
@@ -73,5 +86,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  return [...staticRoutes, ...blogRoutes, ...productRoutes];
+  return [...staticRoutes, ...businessRoutes, ...blogRoutes, ...productRoutes];
 }

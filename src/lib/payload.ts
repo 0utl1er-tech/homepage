@@ -1,6 +1,6 @@
 /* =============================================================================
  * 0UTL1ER — Payload CMS クライアント（サーバー専用）
- * ブログ（/blog 以下）とメンバーページの「書いた記事」が使う。
+ * ブログ（/blog 以下）・メンバーページの「書いた記事」・事業内容（/services 以下）が使う。
  *
  * 環境変数:
  *   PAYLOAD_INTERNAL_URL  例 http://payload.payload.svc（クラスタ内から叩く）
@@ -82,11 +82,9 @@ export type Member = {
 
 export type Audience = "local" | "business" | "both";
 
-export type Service = {
-  id: number;
-  name: string;
-  slug?: string | null;
-  summary?: string | null;
+/** 事業・サービスの LP 本文の段（こんなお悩みに／やること／実績／選ばれる理由／料金／進め方／よくある質問／資料）。
+ *  「サービス（提供の形）」と「事業」の両方が持つ。入っている段だけ表示する */
+export type LpSections = {
   target?: string | null;
   headlineMetric?: string | null;
   problems?: { id?: string; text: string }[] | null;
@@ -101,6 +99,15 @@ export type Service = {
   priceNote?: string | null;
   steps?: { id?: string; name: string; duration?: string | null; detail?: string | null }[] | null;
   faqs?: { id?: string; q: string; a: string }[] | null;
+  downloads?: Download[] | null;
+};
+
+/** 提供の形（IaaS・SaaS・BPaaS・TaaS）。事業内容の図の1列 */
+export type Service = LpSections & {
+  id: number;
+  name: string;
+  slug?: string | null;
+  summary?: string | null;
   state?: "active" | "preparing" | null;
   // 図の表示（2026-10-16）
   kind?: string | null;
@@ -111,7 +118,25 @@ export type Service = {
   showInDiagram?: boolean | null;
   ctaLabel?: string | null;
   blogCategory?: Category | number | null;
-  downloads?: Download[] | null;
+  _status?: "draft" | "published" | null;
+};
+
+/** 事業（phox など）。必ず1つの提供の形（frame）に属する。state=internal は公開しない */
+export type Business = LpSections & {
+  id: number;
+  name: string;
+  slug: string;
+  frame: Service | number;
+  tagline?: string | null;
+  summary: string;
+  audience?: Audience | null;
+  state?: "active" | "preparing" | "internal" | null;
+  products?: { id?: string; name: string; url?: string | null; note?: string | null }[] | null;
+  image?: Media | number | null;
+  showOnFrame?: boolean | null;
+  order?: number | null;
+  blogCategory?: Category | number | null;
+  ctaLabel?: string | null;
   _status?: "draft" | "published" | null;
 };
 
@@ -325,6 +350,53 @@ export const getServiceBySlug = cache(async function getServiceBySlug(
   });
   return json?.docs?.[0] ?? null;
 });
+
+/* ---------- 事業 ---------- */
+
+/** 公開済みの事業を並び順で取る。frameSlug を渡すとその提供の形のものだけ。社内向け（internal）は除く */
+export const getBusinesses = cache(async function getBusinesses(
+  q: { frameSlug?: string } = {}
+): Promise<ListResult<Business>> {
+  const params: Record<string, string | number | undefined> = {
+    "where[_status][equals]": "published",
+    "where[state][not_equals]": "internal",
+    "where[frame.slug][equals]": q.frameSlug,
+    depth: 1,
+    limit: 100,
+    sort: "order",
+  };
+  const json = await getJson<ListResponse<Business>>(`/api/businesses?${qs(params)}`, {
+    tags: ["businesses"],
+  });
+  if (!json) return { ok: false, docs: [] };
+  return { ok: true, docs: (json.docs ?? []).filter((b) => b.state !== "internal") };
+});
+
+/** 事業を1件。draft=true なら下書き（最新の版）を API キーで取る。社内向けは公開・下書きとも返さない */
+export const getBusinessBySlug = cache(async function getBusinessBySlug(
+  slug: string,
+  draft: boolean
+): Promise<Business | null> {
+  const params: Record<string, string | number | undefined> = {
+    "where[slug][equals]": slug,
+    depth: 2,
+    limit: 1,
+  };
+  if (draft) params.draft = "true";
+  else params["where[_status][equals]"] = "published";
+  const json = await getJson<ListResponse<Business>>(`/api/businesses?${qs(params)}`, {
+    draft,
+    tags: ["businesses"],
+  });
+  const doc = json?.docs?.[0] ?? null;
+  if (!doc || doc.state === "internal") return null;
+  return doc;
+});
+
+/** 事業の提供の形の URL 名（frame が id のまま来たときは null） */
+export function businessFrameSlug(b: Business): string | null {
+  return isObj(b.frame) ? b.frame.slug ?? null : null;
+}
 
 /* ---------- 表示用の小物 ---------- */
 
