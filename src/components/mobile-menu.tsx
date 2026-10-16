@@ -16,7 +16,7 @@ export function MobileMenu({ active }: { active?: NavKey }) {
         aria-label={open ? "メニューを閉じる" : "メニューを開く"}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="flex h-11 w-11 items-center justify-center rounded-md border border-line-strong bg-surface-2 text-ink transition-colors hover:bg-surface-3"
+        className="flex h-11 w-11 items-center justify-center border border-line-strong bg-surface-2 text-ink transition-colors hover:bg-surface-3"
       >
         <svg
           width="18"
@@ -53,7 +53,7 @@ export function MobileMenu({ active }: { active?: NavKey }) {
                 onClick={() => setOpen(false)}
                 aria-current={active === item.key ? "page" : undefined}
                 className={cn(
-                  "flex min-h-11 items-center rounded-md px-3 py-3 text-[15px] font-medium transition-colors hover:bg-surface-2 hover:text-ink",
+                  "flex min-h-11 items-center px-3 py-3 text-[15px] font-medium transition-colors hover:bg-surface-2 hover:text-ink",
                   active === item.key ? "bg-surface-2 text-ink" : "text-ink-2"
                 )}
               >

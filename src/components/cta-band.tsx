@@ -32,7 +32,7 @@ export function CtaBand({
       <div className="relative mx-auto max-w-[1200px] px-6 py-20 md:px-12 md:py-[88px]">
         <h2
           className={cn(
-            "font-extrabold tracking-tight",
+            "font-semibold tracking-tight",
             titleSize === "lg" ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl",
             description ? "mb-3.5" : "mb-6"
           )}

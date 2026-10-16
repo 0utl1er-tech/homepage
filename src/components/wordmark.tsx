@@ -12,7 +12,7 @@ export function Wordmark({
     <span className="inline-flex items-baseline gap-2.5">
       <span
         className={cn(
-          "rounded-[var(--radius-sm)] bg-[var(--wordmark-plate-bg)] p-[var(--wordmark-plate-pad)] font-black tracking-[-0.04em] leading-none",
+          "bg-[var(--wordmark-plate-bg)] p-[var(--wordmark-plate-pad)] font-bold tracking-[-0.04em] leading-none",
           className
         )}
       >

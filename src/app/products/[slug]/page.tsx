@@ -40,7 +40,7 @@ function NotFoundView() {
       >
         404
       </div>
-      <h1 className="mb-3.5 text-[26px] font-extrabold">
+      <h1 className="mb-3.5 text-[26px] font-semibold">
         記事が見つかりませんでした
       </h1>
       <p className="mb-7 text-[15px] text-ink-2">
@@ -83,7 +83,7 @@ export default async function ProductDetailPage({
                   {item.dateLabel}
                 </span>
               </div>
-              <h1 className="text-3xl font-black leading-snug tracking-[-0.03em] md:text-[38px]">
+              <h1 className="text-3xl font-semibold leading-snug tracking-[-0.03em] md:text-[38px]">
                 {item.title}
               </h1>
             </div>
@@ -95,7 +95,7 @@ export default async function ProductDetailPage({
               <img
                 src={item.cover}
                 alt=""
-                className="block aspect-video w-full rounded-[14px] border border-line object-cover"
+                className="block aspect-video w-full border border-line object-cover"
               />
             </div>
           )}

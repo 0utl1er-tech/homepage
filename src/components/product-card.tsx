@@ -11,7 +11,7 @@ function NoCover() {
       >
         {BINARY_STRING + BINARY_STRING.slice(0, 12)}
       </span>
-      <span aria-hidden className="relative text-[22px] font-black tracking-[-0.04em] opacity-50">
+      <span aria-hidden className="relative text-[22px] font-semibold tracking-[-0.04em] opacity-50">
         <span className="text-brand">0</span>UTL<span className="text-cost">1</span>ER
       </span>
     </div>
@@ -22,7 +22,7 @@ export function ProductCard({ item }: { item: Card }) {
   return (
     <Link
       href={`/products/${encodeURIComponent(item.slug)}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-line bg-surface text-inherit shadow-[var(--shadow-sm)] transition-all duration-200 ease-out hover:-translate-y-[3px] hover:border-line-strong hover:shadow-[var(--shadow-md)]"
+      className="group flex flex-col overflow-hidden border border-line bg-surface text-inherit transition-colors duration-200 ease-out hover:border-line-strong"
     >
       {item.hasCover && item.cover ? (
         <div className="aspect-video overflow-hidden bg-surface-2">

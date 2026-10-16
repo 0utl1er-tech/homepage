@@ -61,7 +61,7 @@ export function PostList({
                 )}
               </div>
               {thumb ? (
-                <div className="hidden aspect-video w-[168px] overflow-hidden rounded-md border border-line bg-surface-2 md:block">
+                <div className="hidden aspect-video w-[168px] overflow-hidden border border-line bg-surface-2 md:block">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={thumb} alt="" loading="lazy" className="h-full w-full object-cover" />
                 </div>
@@ -116,7 +116,7 @@ export function FeaturedPosts({ posts }: { posts: Post[] }) {
 /** 記事が無いとき・読み込めなかったときの案内 */
 export function EmptyNote({ children }: { children: ReactNode }) {
   return (
-    <div className="rounded-lg border border-dashed border-line-strong bg-surface/40 px-6 py-10 text-center text-sm leading-relaxed text-ink-2">
+    <div className="border border-dashed border-line-strong bg-surface/40 px-6 py-10 text-center text-sm leading-relaxed text-ink-2">
       {children}
     </div>
   );

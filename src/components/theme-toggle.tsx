@@ -132,7 +132,7 @@ export function ThemeMenu({ className }: { className?: string }) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="relative flex h-7 w-7 items-center justify-center rounded-md border border-line-strong bg-surface-2 text-ink-2 transition-colors before:absolute before:-inset-2 before:content-[''] hover:bg-surface-3 hover:text-ink"
+        className="relative flex h-7 w-7 items-center justify-center border border-line-strong bg-surface-2 text-ink-2 transition-colors before:absolute before:-inset-2 before:content-[''] hover:bg-surface-3 hover:text-ink"
       >
         <ThemeIcon choice={choice} />
       </button>
@@ -142,7 +142,7 @@ export function ThemeMenu({ className }: { className?: string }) {
           id={panelId}
           role="group"
           aria-label="表示テーマ"
-          className="absolute right-0 top-full z-50 mt-3 w-48 rounded-md border border-line bg-surface p-1 shadow-[var(--shadow-md)]"
+          className="absolute right-0 top-full z-50 mt-3 w-48 border border-line bg-surface p-1 shadow-[var(--shadow-md)]"
         >
           {OPTIONS.map((o) => {
             const on = o.value === choice;
@@ -157,8 +157,8 @@ export function ThemeMenu({ className }: { className?: string }) {
                   triggerRef.current?.focus();
                 }}
                 className={cn(
-                  "flex h-11 w-full items-center gap-2.5 rounded-sm px-3 text-left text-sm transition-colors hover:bg-surface-2",
-                  on ? "font-bold text-brand" : "text-ink-2 hover:text-ink"
+                  "flex h-11 w-full items-center gap-2.5 px-3 text-left text-sm transition-colors hover:bg-surface-2",
+                  on ? "font-semibold text-brand" : "text-ink-2 hover:text-ink"
                 )}
               >
                 <ThemeIcon choice={o.value} />
@@ -188,7 +188,7 @@ export function ThemeSegmented({ className }: { className?: string }) {
       <div
         role="group"
         aria-label="表示テーマ"
-        className="grid grid-cols-3 gap-1 rounded-md border border-line bg-surface-2 p-1"
+        className="grid grid-cols-3 gap-1 border border-line bg-surface-2 p-1"
       >
         {OPTIONS.map((o) => {
           const on = o.value === choice;
@@ -200,9 +200,9 @@ export function ThemeSegmented({ className }: { className?: string }) {
               aria-label={o.value === "system" ? o.label : undefined}
               onClick={() => setChoice(o.value)}
               className={cn(
-                "flex min-h-11 items-center justify-center gap-1.5 rounded-sm px-2 text-xs transition-colors",
+                "flex min-h-11 items-center justify-center gap-1.5 px-2 text-xs transition-colors",
                 on
-                  ? "bg-surface font-bold text-brand shadow-[var(--shadow-xs)]"
+                  ? "bg-surface font-semibold text-brand"
                   : "text-ink-2 hover:bg-surface-3 hover:text-ink"
               )}
             >

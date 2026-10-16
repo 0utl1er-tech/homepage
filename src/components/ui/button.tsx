@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-transparent bg-clip-padding font-semibold tracking-tight whitespace-nowrap transition-all duration-150 ease-out select-none focus-visible:ring-3 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45 not-disabled:hover:-translate-y-px [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "group/button inline-flex shrink-0 items-center justify-center gap-2 border border-transparent bg-clip-padding font-semibold tracking-tight whitespace-nowrap transition-all duration-150 ease-out select-none focus-visible:ring-3 focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-45 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         // DS: primary
         default:
-          "bg-brand text-[var(--text-on-accent)] border-brand shadow-[var(--shadow-xs)] hover:bg-brand-hover hover:border-brand-hover",
+          "bg-brand text-[var(--text-on-accent)] border-brand hover:bg-brand-hover hover:border-brand-hover",
         // DS: secondary
         secondary:
           "bg-surface-2 text-ink border-line-strong hover:bg-surface-3 hover:border-[var(--border-hover)]",
@@ -20,7 +20,7 @@ const buttonVariants = cva(
         // DS: danger
         destructive:
           "bg-cost text-[var(--text-on-accent)] border-cost hover:bg-[var(--cost-strong)] hover:border-[var(--cost-strong)]",
-        link: "text-brand border-transparent underline-offset-4 hover:underline hover:translate-y-0",
+        link: "text-brand border-transparent underline-offset-4 hover:underline",
       },
       size: {
         sm: "h-7 px-2.5 text-xs",

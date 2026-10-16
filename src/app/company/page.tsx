@@ -59,7 +59,7 @@ export default function CompanyPage() {
             </div>
             <Link
               href={`/members/${MEMBERS[0].slug}`}
-              className="group flex items-center gap-4 rounded-lg border border-line bg-surface p-[22px] transition-colors hover:border-line-strong"
+              className="group flex items-center gap-4 border border-line bg-surface p-[22px] transition-colors hover:border-line-strong"
             >
               <DSAvatar name={COMPANY.representative} size={56} ring="accent" />
               <div>
@@ -76,7 +76,7 @@ export default function CompanyPage() {
             </Link>
           </div>
 
-          <div className="overflow-hidden rounded-md border border-line font-mono text-sm">
+          <div className="overflow-hidden border border-line font-mono text-sm">
             {INFO.map((row, i) => (
               <div
                 key={row.label}
@@ -105,7 +105,7 @@ export default function CompanyPage() {
       <section className="border-b border-line bg-panel">
         <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-12">
           <div className="mb-7 flex items-baseline justify-between">
-            <h2 className="text-2xl font-extrabold tracking-tight md:text-[26px]">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-[26px]">
               私たちの姿勢
             </h2>
             <span className="font-mono text-[13px] text-ink-3">PHILOSOPHY</span>
@@ -126,7 +126,7 @@ export default function CompanyPage() {
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-14 px-6 py-16 md:grid-cols-[320px_1fr] md:px-12">
           <div>
             <div className="mb-2 font-mono text-[13px] text-ink-3">ACCESS</div>
-            <h2 className="mb-3.5 text-2xl font-extrabold tracking-tight">
+            <h2 className="mb-3.5 text-2xl font-semibold tracking-tight">
               アクセス
             </h2>
             <p className="text-sm leading-loose text-ink-2">

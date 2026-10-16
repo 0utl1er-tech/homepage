@@ -13,7 +13,7 @@ export default function BlogPostNotFound() {
         >
           404
         </div>
-        <h1 className="mb-3.5 text-[26px] font-extrabold">ページが見つかりませんでした</h1>
+        <h1 className="mb-3.5 text-[26px] font-semibold">ページが見つかりませんでした</h1>
         <p className="mb-7 text-[15px] text-ink-2">
           URLが変わったか、記事の公開を取りやめた可能性があります。
         </p>

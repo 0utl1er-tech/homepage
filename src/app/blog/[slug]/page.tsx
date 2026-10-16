@@ -99,7 +99,7 @@ function ComparisonNotice({ post }: { post: Post }) {
   return (
     <aside
       aria-label="この記事について"
-      className="mb-10 rounded-lg border border-[var(--warning-border)] bg-[var(--warning-tint)] p-5 md:p-6"
+      className="mb-10 border border-[var(--warning-border)] bg-[var(--warning-tint)] p-5 md:p-6"
     >
       <div className="mb-2.5 text-sm font-bold text-[var(--warning-strong)]">この記事について</div>
       {c.disclosure && (
@@ -132,7 +132,7 @@ function DraftMissing({ slug }: { slug: string }) {
       <SiteNav active="blog" />
       <DraftBanner path={`/blog/${slug}`} />
       <div className="mx-auto max-w-[820px] px-6 py-24 md:px-12">
-        <h1 className="mb-4 text-2xl font-extrabold">下書きを読み込めませんでした</h1>
+        <h1 className="mb-4 text-2xl font-semibold">下書きを読み込めませんでした</h1>
         <p className="text-[15px] leading-relaxed text-ink-2">
           URL名「{slug}」の記事が見つからないか、ホームページから CMS の下書きを読む設定（API キー）が済んでいません。
           CMS の記事画面でURL名を確かめてから、もう一度「プレビュー」を押してください。
@@ -227,7 +227,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                   </>
                 )}
               </div>
-              <h1 className="text-[28px] font-black leading-[1.35] tracking-[-0.03em] md:text-[38px]">
+              <h1 className="text-[28px] font-semibold leading-[1.35] tracking-[-0.03em] md:text-[38px]">
                 {post.title}
               </h1>
               {post.description && (
@@ -294,7 +294,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
             <img
               src={cover}
               alt={isObj(post.cover) ? post.cover.alt ?? "" : ""}
-              className="block aspect-video w-full max-w-[960px] rounded-[14px] border border-line object-cover"
+              className="block aspect-video w-full max-w-[960px] border border-line object-cover"
             />
           </div>
         )}
@@ -302,7 +302,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 px-6 pt-12 pb-16 md:px-12 lg:grid-cols-[minmax(0,760px)_240px] lg:justify-between">
           <div className="min-w-0">
             {toc.length > 1 && (
-              <details className="mb-10 rounded-lg border border-line bg-surface p-5 lg:hidden" open>
+              <details className="mb-10 border border-line bg-surface p-5 lg:hidden" open>
                 <summary className="cursor-pointer text-sm font-bold">この記事の目次</summary>
                 <div className="mt-3">
                   <Toc toc={toc} />
@@ -319,7 +319,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
                 {post.tags.map((t) => (
                   <li
                     key={t}
-                    className="rounded-full bg-surface-2 px-3 py-1 font-mono text-xs text-ink-2"
+                    className="bg-surface-2 px-3 py-1 font-mono text-xs text-ink-2"
                   >
                     #{t}
                   </li>
@@ -349,7 +349,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
             {changelog.length > 0 && (
               <section className="mt-12 border-t border-line pt-8">
-                <h2 className="mb-4 text-lg font-extrabold tracking-tight">変更履歴</h2>
+                <h2 className="mb-4 text-lg font-semibold tracking-tight">変更履歴</h2>
                 <ul className="space-y-2.5">
                   {changelog.map((c, i) => (
                     <li key={c.id ?? i} className="grid grid-cols-[130px_1fr] gap-4 text-sm">
@@ -383,7 +383,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         <section className="border-t border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-14 md:px-12">
             <div className="mb-6 flex items-baseline justify-between">
-              <h2 className="text-2xl font-extrabold tracking-tight">同じジャンルの記事</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">同じジャンルの記事</h2>
               {category && (
                 <Link href={`/blog/category/${category.slug}`} className="o-arrow">
                   {category.name}の記事をすべて見る →

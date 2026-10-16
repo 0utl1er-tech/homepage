@@ -78,7 +78,7 @@ export default async function BlogPage() {
                 </Link>
                 <div className="flex flex-1 flex-col p-7 md:p-8">
                   <div className="mb-2 text-[13px] font-medium text-ink-3">{ent.eyebrow}</div>
-                  <h2 className="mb-3 text-2xl font-extrabold tracking-tight">
+                  <h2 className="mb-3 text-2xl font-semibold tracking-tight">
                     {first ? (
                       <Link href={`/blog/category/${first.slug}`} className="transition-colors hover:text-brand">
                         {ent.label}
@@ -94,7 +94,7 @@ export default async function BlogPage() {
                         <li key={g.slug}>
                           <Link
                             href={`/blog/category/${g.slug}`}
-                            className="inline-flex min-h-9 items-center rounded-full border border-line-strong bg-surface-2 px-3.5 text-[13px] text-ink transition-colors hover:border-brand hover:text-brand"
+                            className="inline-flex min-h-9 items-center border border-line-strong bg-surface-2 px-3.5 text-[13px] text-ink transition-colors hover:border-brand hover:text-brand"
                           >
                             {g.name}
                           </Link>
@@ -120,7 +120,7 @@ export default async function BlogPage() {
           <GenreTabs genres={genres} />
 
           <div className="mt-10 mb-2 flex items-baseline justify-between">
-            <h2 className="text-2xl font-extrabold tracking-tight">新着の記事</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">新着の記事</h2>
             <span className="font-mono text-[13px] text-ink-3">LATEST</span>
           </div>
 

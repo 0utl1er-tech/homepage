@@ -101,7 +101,7 @@ export default async function MemberPage({ params }: { params: Params }) {
           </div>
 
           <div>
-            <h2 className="mb-5 text-2xl font-extrabold tracking-tight">
+            <h2 className="mb-5 text-2xl font-semibold tracking-tight">
               経歴・紹介
             </h2>
             <div className="space-y-5">
@@ -135,7 +135,7 @@ export default async function MemberPage({ params }: { params: Params }) {
       <section className="border-b border-line bg-panel">
         <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-12">
           <div className="mb-7 flex items-baseline justify-between">
-            <h2 className="text-2xl font-extrabold tracking-tight">専門領域</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">専門領域</h2>
             <span className="font-mono text-[13px] text-ink-3">EXPERTISE</span>
           </div>
           <div className="flex max-w-[720px] flex-wrap gap-2.5">
@@ -153,7 +153,7 @@ export default async function MemberPage({ params }: { params: Params }) {
         <section className="border-b border-line">
           <div className="mx-auto max-w-[1200px] px-6 py-16 md:px-12">
             <div className="mb-7 flex items-baseline justify-between">
-              <h2 className="text-2xl font-extrabold tracking-tight">書いた記事</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">書いた記事</h2>
               <span className="font-mono text-[13px] text-ink-3">ARTICLES</span>
             </div>
             {posts.docs.length > 0 ? (
@@ -170,7 +170,7 @@ export default async function MemberPage({ params }: { params: Params }) {
         <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-14 px-6 py-16 md:grid-cols-[320px_1fr] md:px-12">
           <div>
             <div className="mb-2 font-mono text-[13px] text-ink-3">COMPANY</div>
-            <h2 className="text-2xl font-extrabold tracking-tight">所属</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">所属</h2>
           </div>
           <DSCard className="p-6">
             <div className="mb-1.5 text-[17px] font-bold">{COMPANY.nameJa}</div>

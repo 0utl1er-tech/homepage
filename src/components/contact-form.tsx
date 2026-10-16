@@ -6,7 +6,7 @@ import { DSBadge } from "@/components/ds/ds-badge";
 import { trackEvent } from "@/lib/track";
 
 const inputCls =
-  "w-full rounded-md border border-input bg-surface px-[15px] py-[13px] text-sm text-ink outline-none transition-[color,border-color,box-shadow] placeholder:text-ink-3 focus:border-brand focus-visible:ring-3 focus-visible:ring-[var(--focus-ring)]";
+  "w-full border border-input bg-surface px-[15px] py-[13px] text-sm text-ink outline-none transition-[color,border-color,box-shadow] placeholder:text-ink-3 focus:border-brand focus-visible:ring-3 focus-visible:ring-[var(--focus-ring)]";
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
@@ -24,11 +24,11 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-start gap-4 rounded-lg border border-profit bg-surface p-12">
+      <div className="flex flex-col items-start gap-4 border border-profit bg-surface p-12">
         <DSBadge tone="profit" dot>
           送信完了
         </DSBadge>
-        <h2 className="text-2xl font-extrabold tracking-tight">
+        <h2 className="text-2xl font-semibold tracking-tight">
           お問い合わせを受け付けました。
         </h2>
         <p className="text-sm leading-loose text-ink-2">

@@ -108,7 +108,7 @@ export default async function BlogCategoryPage({ params }: { params: Params }) {
         <section>
           <div className="mx-auto max-w-[1200px] px-6 pt-12 md:px-12">
             <div className="mb-6 flex items-baseline justify-between">
-              <h2 className="text-2xl font-extrabold tracking-tight">まず読む3本</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">まず読む3本</h2>
               <span className="font-mono text-[13px] text-ink-3">START HERE</span>
             </div>
             <FeaturedPosts posts={featured} />
@@ -119,7 +119,7 @@ export default async function BlogCategoryPage({ params }: { params: Params }) {
       <section>
         <div className="mx-auto max-w-[1200px] px-6 pt-12 pb-16 md:px-12">
           <div className="mb-6 flex items-baseline justify-between">
-            <h2 className="text-2xl font-extrabold tracking-tight">
+            <h2 className="text-2xl font-semibold tracking-tight">
               {featured.length > 0 ? "記事の一覧" : "新着の記事"}
             </h2>
             <span className="font-mono text-[13px] text-ink-3">
@@ -154,7 +154,7 @@ export default async function BlogCategoryPage({ params }: { params: Params }) {
           <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-10 px-6 py-14 md:grid-cols-[320px_1fr] md:px-12">
             <div>
               <div className="mb-2 font-mono text-[13px] text-ink-3">SERVICE</div>
-              <h2 className="text-2xl font-extrabold tracking-tight">関係するサービス</h2>
+              <h2 className="text-2xl font-semibold tracking-tight">関係するサービス</h2>
             </div>
             <DSCard className="p-6">
               <div className="mb-1.5 text-[17px] font-bold">

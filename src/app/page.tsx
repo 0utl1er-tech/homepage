@@ -47,7 +47,7 @@ export default function HomePage() {
             <div className="mb-6 font-mono text-[13px] tracking-[0.1em] text-brand">
               {"// 0UTL1ER K.K."}
             </div>
-            <h1 className="mb-6 text-5xl font-black leading-[1.08] tracking-[-0.04em] md:text-6xl">
+            <h1 className="mb-6 text-5xl font-semibold leading-[1.08] tracking-[-0.04em] md:text-6xl">
               <span className="text-cost">Beyond</span> the
               <br />
               <span className="text-brand">Correlation</span>
@@ -72,7 +72,7 @@ export default function HomePage() {
       <section className="border-b border-line">
         <div className="mx-auto max-w-[1200px] px-6 py-20 md:px-12">
           <div className="mb-2 flex items-baseline justify-between border-b border-line pb-6">
-            <h2 className="text-2xl font-extrabold tracking-tight md:text-[26px]">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-[26px]">
               私たちを構成する3つの要素
             </h2>
             <span className="font-mono text-[13px] text-ink-3">WHAT WE ARE</span>
@@ -119,14 +119,14 @@ export default function HomePage() {
             <div className="mb-3.5 font-mono text-[13px] tracking-[0.1em] text-brand">
               {"// COMPANY"}
             </div>
-            <h2 className="mb-5 text-3xl font-extrabold tracking-tight">
+            <h2 className="mb-5 text-3xl font-semibold tracking-tight">
               会社概要
             </h2>
             <Link href="/company" className="o-arrow">
               会社情報を見る →
             </Link>
           </div>
-          <div className="flex items-center gap-4 rounded-lg border border-line bg-surface p-[22px]">
+          <div className="flex items-center gap-4 border border-line bg-surface p-[22px]">
             <DSAvatar name={COMPANY.representative} size={52} ring="accent" />
             <div>
               <div className="text-base font-bold">{COMPANY.representative}</div>

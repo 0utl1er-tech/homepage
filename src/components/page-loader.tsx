@@ -55,9 +55,9 @@ export function PageLoader({ durationMs = 3200 }: { durationMs?: number }) {
 
         <Wordmark className="text-[52px] leading-none" />
 
-        <div className="mt-10 h-1.5 overflow-hidden rounded-full border border-line bg-surface-2">
+        <div className="mt-10 h-1.5 overflow-hidden border border-line bg-surface-2">
           <div
-            className="relative h-full overflow-hidden rounded-full bg-brand transition-[width] duration-100 ease-linear"
+            className="relative h-full overflow-hidden bg-brand transition-[width] duration-100 ease-linear"
             style={{ width: `${p.toFixed(1)}%` }}
           >
             <span className="loader-shimmer absolute left-0 top-0 h-full w-[38%]" />
@@ -78,7 +78,7 @@ export function PageLoader({ durationMs = 3200 }: { durationMs?: number }) {
             return (
               <div
                 key={label}
-                className="flex flex-1 items-center gap-2.5 rounded-md border border-line bg-surface px-4 py-[13px]"
+                className="flex flex-1 items-center gap-2.5 border border-line bg-surface px-4 py-[13px]"
               >
                 <span
                   className="h-1.5 w-1.5 flex-none rounded-full transition-colors duration-300"

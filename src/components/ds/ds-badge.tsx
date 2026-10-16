@@ -29,7 +29,7 @@ export function DSBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full font-semibold",
+        "inline-flex items-center font-semibold",
         size === "sm"
           ? "gap-1 px-[7px] py-[2px] text-[11px]"
           : "gap-1.5 px-[9px] py-[3px] text-xs",
