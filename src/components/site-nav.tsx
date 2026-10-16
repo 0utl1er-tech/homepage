@@ -15,19 +15,27 @@ export function SiteNav({ active }: { active?: NavKey }) {
         </Link>
 
         <div className="flex items-center gap-4 md:gap-[30px]">
-          <div className="hidden items-center gap-[30px] md:flex">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className={cn(
-                  "font-mono text-sm transition-colors hover:text-ink",
-                  active === item.key ? "text-brand" : "text-ink-2"
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="hidden items-center gap-7 md:flex">
+            {NAV_ITEMS.map((item) => {
+              const current = active === item.key;
+              return (
+                <Link
+                  key={item.key}
+                  href={item.href}
+                  aria-current={current ? "page" : undefined}
+                  className={cn(
+                    // 下線がマウスを乗せると左から伸びる。今いるページは下線を出したまま
+                    "relative py-2 text-[14px] font-medium tracking-[0.02em] transition-colors duration-200 hover:text-ink",
+                    "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[2px] after:origin-left after:rounded-full after:bg-brand",
+                    "after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100",
+                    "motion-reduce:after:transition-none",
+                    current ? "text-ink after:scale-x-100" : "text-ink-2 after:scale-x-0"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
           <div className="flex items-center gap-3">
             <ThemeMenu className="hidden md:block" />
